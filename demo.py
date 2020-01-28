@@ -16,15 +16,17 @@ import mysql.connector
 database=mysql.connector.connect(host='localhost',user='root',passwd='hari1998',database='ipl-ball-by-ball')
 cursor=database.cursor()
 
+
+
+query2 = "select * from iplmatch"
+#cursor.execute(query2)
+#table_ = cursor.fetchall()
+match_data = pd.read_sql(query2,database)
+
 query="select * from ball"
 #cursor.execute(query)
 #table_rows = cursor.fetchall()
 delivery_data = pd.read_sql(query,database)
-
-query2 = "select * from match"
-#cursor.execute(query2)
-#table_ = cursor.fetchall()
-match_data = pd.read_sql(query2,database)
 
 database.commit()
 
@@ -46,37 +48,45 @@ def my_form():
 @app.route('/batVsBall', methods=['POST'])		
 def home():
    #         print(delivery_data)
-			name = request.form['batsman']
-			name2 = request.form['bowler']
-			batsman_data_1=delivery_data[(delivery_data.batsman==name)&(delivery_data.bowler==name2)]
-			balls=len(batsman_data_1[(batsman_data_1.wide_runs==0)&(batsman_data_1.noball_runs==0)])
-			out = len(batsman_data_1[batsman_data_1.player_dismissed==name])
-			runs = batsman_data_1.batsman_runs.sum()
-		#	out_data = batsman_data_1
-		#	out = len(out_data[(out_data.player_dismissed==name)].index)
-		#	out = len(out__.index)
-		#	out = batsman_data_1.player_dismissed.notnull().astype('int').sum()
-			run1 = np.asarray(runs)
-			df_list = run1.tolist()
-			JSONP_data = jsonpify(df_list)
+				name = request.form['batsman']
+				name2 = request.form['bowler']
+				batsman_data_1=delivery_data[(delivery_data.batsman==name)&(delivery_data.bowler==name2)]
+				balls=len(batsman_data_1[(batsman_data_1.wide_runs==0)&(batsman_data_1.noball_runs==0)])
+		#	out = len(batsman_data_1[batsman_data_1.player_dismissed==name].index)
+				runs = batsman_data_1.batsman_runs.sum()
+				outss=0
+				for outs in batsman_data_1.player_dismissed:
+						if outs!="\r":
+								outss = outss + 1
+					    
+			#out = batsman_data_1[batsman_data_1.player_dismissed==name]
+			#out_ = len(out.index)
+			#notnull().astype('int').sum()
+			#	out = batsman_data_1.player_dismissed.notnull().astype('int').sum()
+				run1 = np.asarray(runs)
+				df_list = run1.tolist()
+				JSONP_data = jsonpify(df_list)
 			
-			balls1 = np.asarray(balls)
-			df_list1 = balls1.tolist()
-			JSONP_data1 = jsonpify(df_list1)
+				balls1 = np.asarray(balls)
+				df_list1 = balls1.tolist()
+				JSONP_data1 = jsonpify(df_list1)
 			
-			out1 = np.asarray(out)
-			df_list2 = out1.tolist()
-			JSONP_data2 = jsonpify(df_list2)
+				out1 = np.asarray(outss)
+				df_list2 = out1.tolist()
+				JSONP_data2 = jsonpify(df_list2)
 			
-			str1 = (run1/balls1)*100
-			df_list3 = str1.tolist()
-			JSONP_data3 = jsonpify(df_list3)
-			print(JSONP_data)
+				str1 = (run1/balls1)*100
+				df_list3 = str1.tolist()
+				JSONP_data3 = jsonpify(df_list3)
+				print(JSONP_data)
 #			 answer = [JSONP_data,JSONP_data1,JSONP_data2]
-			answer = {'runs':df_list,'balls':df_list1,'out':df_list2,'strike rate':df_list3}
+				answer = {'runs':df_list,'balls':df_list1,'out':df_list2,'strike rate':df_list3}
 			
 #			d = json.dumps(d)
-			return jsonpify(answer)
+				ds = np.asarray(delivery_data)
+				dds = ds.tolist()
+				return jsonpify(answer)
+				#jsonpify(answer)
 			
 			
 @app.route('/batVsVenue')
