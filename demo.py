@@ -36,11 +36,7 @@ database.commit()
 @app.route('/batVsBall')
 def my_form():
 		
-		return '''<form method="POST">
-                  batsman: <input type="text" name="batsman"><br>
-                  bowler: <input type="text" name="bowler"><br>
-                  <input type="submit" value="Submit"><br>
-              </form>'''
+		return render_template('batvsball.html')
 
 
 
@@ -91,11 +87,7 @@ def home():
 			
 @app.route('/batVsVenue')
 def my_form_1():
-		return '''<form method="POST">
-                  batsman: <input type="text" name="batsman"><br>
-                  venue: <input type="text" name="venue"><br>
-                  <input type="submit" value="Submit"><br>
-              </form>'''
+		return render_template('batvsvenue.html')
 			
 @app.route('/batVsVenue', methods=['POST'])		
 def home_1():
