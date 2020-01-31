@@ -51,8 +51,9 @@ def home():
 		#	out = len(batsman_data_1[batsman_data_1.player_dismissed==name].index)
 				runs = batsman_data_1.batsman_runs.sum()
 				outss=0
-				for outs in batsman_data_1.player_dismissed:
-						if outs!="\r":
+				for outs in batsman_data_1.dismissal_kind:
+						if ((outs!="\r")&(outs!="run out\r")):
+							
 								outss = outss + 1
 					    
 			#out = batsman_data_1[batsman_data_1.player_dismissed==name]
@@ -101,19 +102,24 @@ def home_1():
 # 			        print(matches)
 					runs=0
 					balls=0
+					out = 0
 					for match in matches:
 							runs = 0
 							balls = 0
+							out = 0
+							avg = batsman_data[batsman_data.match_id==match]
 							t=batsman_data[batsman_data.match_id==match].batsman_runs.sum()
 							runs=runs+t
 #           				print(runs)
+							out = out+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.player_dismissed==name)])
 							balls=balls+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
-							batting_first=batting_first+[[venue,1,balls,t]]
-			batvs_venue = pd.DataFrame(batting_first,columns=['venue','batting first','balls','runs'])
+							batting_first=batting_first+[[venue,1,balls,t,out]]
+			batvs_venue = pd.DataFrame(batting_first,columns=['venue','batting first','balls','runs','out'])
 			batsman_venue = batvs_venue[batvs_venue.balls != 0]
 			abc = batsman_venue[batsman_venue.venue==name2]
 #			venue_runs = pd.DataFrame(datatoss[(datatoss.venue==name3)])
 			total_runs = abc.runs.sum()
+			outss = abc.out.sum()
 			h_cen = 0
 			cen = 0
 			num_inni = len(abc.index)
@@ -140,13 +146,16 @@ def home_1():
 			
 			num_inni1 = np.asarray(num_inni)
 			df_list4 = num_inni1.tolist()
+			
+			num_out = np.asarray(outss)
+			df_list5 = num_out.tolist()
 		  
 		     
-			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4}
+			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4,'outs' :df_list5}
 			
 			bat_vs_venue = abc.drop(columns=['batting first'])
 #			bat_array = bat_vs_venue.reset_index().values
-			bat_answer = bat_vs_venue.values.tolist()
+			bat_answer = abc.values.tolist()
 			return jsonpify(answer)
 		
 			
