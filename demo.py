@@ -84,7 +84,70 @@ def home():
 				dds = ds.tolist()
 				return jsonpify(answer)
 				#jsonpify(answer)
+
+
+@app.route('/ballVsVenue')
+def my_form_2():
+		return render_template('ballvsvenue.html')
+
+@app.route('/ballVsVenue', methods=['POST'])		
+def home_2():
+			bowling_first = list()
+			name = request.form['bowler']
+			name2 = request.form['venue']
+			bowler_data = delivery_data[(delivery_data.bowler==name)]
+			for venue in match_data.venue.unique():
+					matches=match_data[(match_data.venue==venue)].id
+					wk=0
+					runs=0
+					balls = 0
+					for match in matches:
+							wk=0
+							runs=0
+							balls = 0
+#							ta=bowler_data[(bowler_data.match_id==match)&(bowler_data.dismissal_kind!='run out\r')&(bowler_data.dismissal_kind!='\r')].player_dismissed.sum()
+							for wks in bowler_data[(bowler_data.match_id==match)&(bowler_data.dismissal_kind!='run out\r')&(bowler_data.dismissal_kind!='\r')].player_dismissed:
+								if wks!='':
+									wk = wk+1
+							t=bowler_data[bowler_data.match_id==match].total_runs.sum()
+							balls=balls+len(bowler_data[(bowler_data.match_id==match)&(bowler_data.wide_runs==0)&(bowler_data.noball_runs==0)])
+							bowling_first=bowling_first+[[venue,t,wk,balls]]
+			bowvs_venue = pd.DataFrame(bowling_first,columns=['venue','runs','wickets','balls'])
+			bowler_venue = bowvs_venue[bowvs_venue.balls != 0]
+			abc = bowler_venue[bowler_venue.venue==name2]
 			
+			
+			inning = len(abc.index)
+			wick = abc.wickets.sum()
+			runs = abc.runs.sum()
+			balls1 = abc.balls.sum()
+			over = (balls1/6)
+			economy = (runs/over)
+			average = (runs/wick)
+
+			num_inni = np.asarray(inning)
+			df_list1 = num_inni.tolist()
+
+			num_runs = np.asarray(runs)
+			df_list2 = num_runs.tolist()
+
+			num_wickets = np.asarray(wick)
+			df_list3 = num_wickets.tolist()
+
+			num_average = np.asarray(average)
+			df_list4 = num_average.tolist()
+
+			num_economy = np.asarray(economy)
+			df_list5 = num_economy.tolist()
+			
+			ball_answer = abc.values.tolist()
+		
+			answer = {'number of innings':df_list1,'total runs':df_list2,'total wickets':df_list3,'average':df_list4 ,'economy':df_list5}
+			return jsonpify(answer)
+
+
+
+
 			
 @app.route('/batVsVenue')
 def my_form_1():
@@ -120,6 +183,7 @@ def home_1():
 #			venue_runs = pd.DataFrame(datatoss[(datatoss.venue==name3)])
 			total_runs = abc.runs.sum()
 			outss = abc.out.sum()
+			average = (total_runs/outss)
 			h_cen = 0
 			cen = 0
 			num_inni = len(abc.index)
@@ -149,9 +213,13 @@ def home_1():
 			
 			num_out = np.asarray(outss)
 			df_list5 = num_out.tolist()
+			
+			num_average = np.asarray(average)
+			df_list6 = num_average.tolist()
+		  
 		  
 		     
-			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4,'outs' :df_list5}
+			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4,'outs' :df_list5,'average':df_list6}
 			
 			bat_vs_venue = abc.drop(columns=['batting first'])
 #			bat_array = bat_vs_venue.reset_index().values
