@@ -33,10 +33,15 @@ database.commit()
 #delivery_data=pd.read_csv("deliveries_till_2019.csv")
 #match_data=pd.read_csv("matches_till_2019.csv")
 
+
+@app.route('/')
+def website_home():
+		return render_template('tem.html')
+
 @app.route('/batVsBall')
 def my_form():
 		
-		return render_template('batvsball.html')
+		return render_template('imagebat.html')
 
 
 
@@ -88,7 +93,7 @@ def home():
 
 @app.route('/ballVsVenue')
 def my_form_2():
-		return render_template('ballvsvenue.html')
+		return render_template('imageball.html')
 
 @app.route('/ballVsVenue', methods=['POST'])		
 def home_2():
@@ -151,7 +156,7 @@ def home_2():
 			
 @app.route('/batVsVenue')
 def my_form_1():
-		return render_template('batvsvenue.html')
+		return render_template('batvenue.html')
 			
 @app.route('/batVsVenue', methods=['POST'])		
 def home_1():
