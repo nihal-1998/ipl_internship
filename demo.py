@@ -231,6 +231,60 @@ def home_1():
 			bat_answer = abc.values.tolist()
 			return jsonpify(answer)
 		
+
+@app.route('/batVsBallInvVenue')
+def my_form_3():
+		return render_template('all.html')
 			
+@app.route('/batVsBallInvVenue', methods=['POST'])		
+def home_3():
+			batting_first = list()
+			name = request.form['batsman']
+			name2 = request.form['bowler']
+			name3 = request.form['venue']
+			batsman_data_1=delivery_data[(delivery_data.batsman==name)&(delivery_data.bowler==name2)]
+			for venue in match_data.venue.unique():
+					matches=match_data[(match_data.venue==venue)].id
+# 			        print(matches)
+					runs=0
+					balls=0
+					out = 0
+					for match in matches:
+							runs = 0
+							balls = 0
+							out = 0
+							avg = batsman_data_1[batsman_data_1.match_id==match]
+							t=batsman_data_1[batsman_data_1.match_id==match].batsman_runs.sum()
+							runs=runs+t
+#           				print(runs)
+							out = out+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.player_dismissed==name)&(batsman_data_1.dismissal_kind!='run out\r')])
+							balls=balls+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.wide_runs==0)&(batsman_data_1.noball_runs==0)])
+							batting_first=batting_first+[[venue,1,balls,t,out]]
+			batvs_venue = pd.DataFrame(batting_first,columns=['venue','batting first','balls','runs','out'])
+			batsman_venue = batvs_venue[batvs_venue.balls != 0]
+			abc = batsman_venue[batsman_venue.venue==name3]
+			runs = abc.runs.sum()
+			balls = abc.balls.sum()
+			outs = abc.out.sum()
+			strike = (runs/balls)*100
+			
+			run1 = np.asarray(runs)
+			df_list = run1.tolist()
+			
+			ball1 = np.asarray(balls)
+			df_list1 = ball1.tolist()
+			
+			out1 = np.asarray(outs)
+			df_list2 = out1.tolist()
+			
+			str1 = np.asarray(strike)
+			df_list3 = str1.tolist()
+			
+			
+			answer = {'runs':df_list,'balls':df_list1,'out':df_list2,'strike rate':df_list3}
+			
+			return jsonpify(answer)
+
+		
 if __name__=='__main__':
 	app.run	(debug=True)
