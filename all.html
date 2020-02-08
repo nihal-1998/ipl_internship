@@ -2,11 +2,13 @@
 <html>
 <head>
 
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <style>
 
@@ -21,7 +23,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 @media only screen and (max-width: 600px) {main {margin-left: 0;}}
 
 
-
 /* Add styles to the form container */
 .container {
   position: absolute;
@@ -32,12 +33,11 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   background-color: white;
 }
 
-
 .container1 {
   position: absolute;
    max-width: 300px auto;
-    margin: 345px;
-	right: 0;
+    margin: 364px;
+	right : 0;
   background-color: white;
  
 }
@@ -71,7 +71,7 @@ input[type=text]:focus, input[type=password]:focus {
   opacity: 1;
 }
 body {
-  background-image: url({{ url_for ('static', filename = 'img/cricketbatball.jpg') }});
+  background-image: url({{ url_for ('static', filename = 'img/bbg.jpg') }});
   background-size:100% 1200%;
   background-repeat: no-repeat;
  
@@ -81,6 +81,7 @@ body {
 </style>
 </head>
 <body>
+
 
 
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
@@ -115,31 +116,41 @@ body {
 </div>
 
 
-
  <form  class =  "container1" method = "POST" align = "right">
  	 			  
 {% for table in tables %}
-           
+          
             {{ table|safe }}
 {% endfor %}
  </form>
+ 
+ 
+<h2 style="color:white" align = "center">IPL batsman VS bowler in venue ANALYSIS</h2>
 
-<h2 style="color:white" align = "center">IPL bowler VS venue ANALYSIS</h2>
+    
 
   <form  class="container" method = "POST" align = "center">
-    <h1>Bowler Vs venue</h1>
+    <h1>Batsman Vs venue</h1>
 
-    <label for="email"><b>bowler name</b></label>
-    <input type="text" placeholder="Enter batsman name" name="bowler" required>
+    <label for="email"><b>batsman name</b></label>
+    <input type="text" placeholder="Enter batsman name" name="batsman" required>
+	
+	<label for ="email"><b>bowler name</b></label>
+	<input type="text" placeholder="enter bowler name" name="bowler" required>
 
     <label for="psw"><b>venue name</b></label>
-    <input type="text" placeholder="Enter bowler name" name="venue" required>
-
+    <input type="text" placeholder="Enter venue name" name="venue" required>
+   
     <button type="submit" class="btn">submit</button>
-					  
-	
+	<table>
+
+
   </form>
+  
+
+ 
 
 </div>
+
 </body>
 </html>

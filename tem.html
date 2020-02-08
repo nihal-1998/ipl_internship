@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-
+<title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <style>
-
-
 body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .w3-row-padding img {margin-bottom: 12px}
 
@@ -19,68 +15,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 #main {margin-left: 120px}
 
 @media only screen and (max-width: 600px) {main {margin-left: 0;}}
-
-
-
-/* Add styles to the form container */
-.container {
-  position: absolute;
-  right: 0;
-  margin: 20px;
-  max-width: 300px;
-  padding: 16px;
-  background-color: white;
-}
-
-
-.container1 {
-  position: absolute;
-   max-width: 300px auto;
-    margin: 345px;
-	right: 0;
-  background-color: white;
- 
-}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 90%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit button */
-.btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.btn:hover {
-  opacity: 1;
-}
-body {
-  background-image: url({{ url_for ('static', filename = 'img/cricketbatball.jpg') }});
-  background-size:100% 1200%;
-  background-repeat: no-repeat;
- 
-}
-
-
 </style>
-</head>
-<body>
+<body class="w3-black">
 
 
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
@@ -115,31 +51,28 @@ body {
 </div>
 
 
+<div class="w3-padding-large" id="main">
+ 
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">IPL PLAYER PERFORMANCE</span> ANALYSIS.</h1>
+    <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" alt="boy" class="w3-image" width="500" height="400"/>
+  </header>
 
- <form  class =  "container1" method = "POST" align = "right">
- 	 			  
-{% for table in tables %}
-           
-            {{ table|safe }}
-{% endfor %}
- </form>
+  
+  
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+   
+ 
+  </footer>
 
-<h2 style="color:white" align = "center">IPL bowler VS venue ANALYSIS</h2>
-
-  <form  class="container" method = "POST" align = "center">
-    <h1>Bowler Vs venue</h1>
-
-    <label for="email"><b>bowler name</b></label>
-    <input type="text" placeholder="Enter batsman name" name="bowler" required>
-
-    <label for="psw"><b>venue name</b></label>
-    <input type="text" placeholder="Enter bowler name" name="venue" required>
-
-    <button type="submit" class="btn">submit</button>
-					  
-	
-  </form>
 
 </div>
+
 </body>
 </html>

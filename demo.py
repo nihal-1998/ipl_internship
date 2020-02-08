@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,make_response
 from flask_mysqldb import MySQL
 import json
 import numpy as np 
@@ -34,7 +34,7 @@ database.commit()
 #match_data=pd.read_csv("matches_till_2019.csv")
 
 
-@app.route('/')
+@app.route('/home')
 def website_home():
 		return render_template('tem.html')
 
@@ -87,7 +87,10 @@ def home():
 #			d = json.dumps(d)
 				ds = np.asarray(delivery_data)
 				dds = ds.tolist()
-				return jsonpify(answer)
+				response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+				an=response
+				df = pd.DataFrame(answer,index=[0])
+				return render_template('imagebat.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 				#jsonpify(answer)
 
 
@@ -148,7 +151,11 @@ def home_2():
 			ball_answer = abc.values.tolist()
 		
 			answer = {'number of innings':df_list1,'total runs':df_list2,'total wickets':df_list3,'average':df_list4 ,'economy':df_list5}
-			return jsonpify(answer)
+			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+			an=response
+			df = pd.DataFrame(answer,index=[0])
+			return render_template('imageball.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+			
 
 
 
@@ -229,7 +236,12 @@ def home_1():
 			bat_vs_venue = abc.drop(columns=['batting first'])
 #			bat_array = bat_vs_venue.reset_index().values
 			bat_answer = abc.values.tolist()
-			return jsonpify(answer)
+			
+			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+			an=response
+			df = pd.DataFrame(answer,index=[0])
+			return render_template('batvenue.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+			
 		
 
 @app.route('/batVsBallInvVenue')
@@ -282,9 +294,103 @@ def home_3():
 			
 			
 			answer = {'runs':df_list,'balls':df_list1,'out':df_list2,'strike rate':df_list3}
+			an = jsonpify(answer)
+			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+			an=response
+			df = pd.DataFrame(answer,index=[0])
+			return render_template('all.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 			
-			return jsonpify(answer)
 
-		
+@app.route('/batVsteam')
+def my_form_4():
+		return render_template('batvsteam.html')
+			
+@app.route('/batVsteam', methods=['POST'])		
+def home_4():
+			batting_first = list()
+			name = request.form['batsman']
+			name2 = request.form['team']
+			batsman_data=delivery_data[(delivery_data.batsman==name)]
+			for team in match_data.team1.unique():
+				teams=match_data[(match_data.team1==team)].id
+				runs=0
+				balls=0
+				out=0
+				for match in teams:
+						runs=0
+						balls=0
+						out=0
+						t=batsman_data[batsman_data.match_id==match].batsman_runs.sum()
+						runs=runs+t
+						out = out+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.player_dismissed==name)])
+						balls=balls+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
+						batting_first=batting_first+[[team,1,balls,runs,out]]
+
+#taking data where batted second
+#data=match_data[match_data.team2==player_team]
+			batting_second=list()
+			for team in match_data.team2.unique():
+				teams=match_data[(match_data.team2==team)].id
+				runs=0
+				balls=0
+				out=0
+				for match in teams:
+						runs=0
+						balls=0
+						out=0
+						t=batsman_data[batsman_data.match_id==match].batsman_runs.sum()
+						runs=runs+t
+						out = out+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.player_dismissed==name)])
+						balls=balls+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
+						batting_second=batting_second+[[team,0,balls,runs,out]]
+        
+#merging the two data sets
+			batting_first=batting_first+batting_second
+			df=pd.DataFrame(data=batting_first,columns=['team','batting_first','balls','runs','out'])
+			datatoss = df.drop(['batting_first'],axis = 1) 
+			abc = datatoss[datatoss.balls!=0]
+			abc1 = abc[abc.venue==name2]
+			runs = abc1.runs.sum()
+			balls = abc1.balls.sum()
+			outs = abc1.out.sum()
+			strike = (runs/balls)*100
+			average = (runs/outs)
+			h_cen = 0
+			cen = 0
+			num_inni = len(abc1.index)
+			for fif in abc1.runs:
+					if((fif>49) & (fif<100)):
+							h_cen = h_cen+1
+					elif(fif>99):
+							cen = cen+1
+			
+			sti1 = np.asarray(strike)
+			df_list2 = sti1.tolist()
+			
+			
+			h_cen1 = np.asarray(h_cen)
+			df_list1 = h_cen1.tolist()
+			
+			
+			cen1 = np.asarray(cen)
+			df_list = cen1.tolist()
+			
+			total_runs1 = np.asarray(runs)
+			df_list3 = total_runs1.tolist()
+			
+			num_inni1 = np.asarray(num_inni)
+			df_list4 = num_inni1.tolist()
+			
+			num_out = np.asarray(outs)
+			df_list5 = num_out.tolist()
+			
+			num_average = np.asarray(average)
+			df_list6 = num_average.tolist()
+			
+			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4,'outs' :df_list5,'average':df_list6}
+			
+			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+			return render_template('batvsteam.html',an = response)
+			
 if __name__=='__main__':
 	app.run	(debug=True)

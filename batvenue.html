@@ -2,7 +2,25 @@
 <html>
 <head>
 
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
+
+
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+
+.w3-sidebar {width: 120px;background: #222;}
+
+#main {margin-left: 120px}
+
+@media only screen and (max-width: 600px) {main {margin-left: 0;}}
+
 
 /* Add styles to the form container */
 .container {
@@ -14,9 +32,19 @@
   background-color: white;
 }
 
+.container1 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 334px;
+	right : 0;
+  background-color: white;
+ 
+}
+
+
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  width: 100%;
+  width: 90%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
@@ -44,7 +72,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 body {
   background-image: url({{ url_for ('static', filename = 'img/cricketball.jpg') }});
-  background-size:100% 850%;
+  background-size:100% 1200%;
   background-repeat: no-repeat;
  
 }
@@ -54,18 +82,63 @@ body {
 </head>
 <body>
 
-<h2>IPL batsman VS venue ANALYSIS</h2>
 
-  <form  class="container" method = "POST">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  
+  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:100%"/>
+  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <p>HOME</p>
+  </a>
+  <a href="batVsBall" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS BOWLER</p>
+  </a>
+  <a href="batVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS VENUE</p>
+  </a>
+  <a href="ballVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BOWLER VS VENUE</p>
+	</a>
+  <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs ball in venue</p>
+  </a>
+</nav>
+
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="batVsBall" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ABOUT</a>
+    <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">PHOTOS</a>
+    <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTACT</a>
+	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONT</a>
+  </div>
+</div>
+
+
+ <form  class =  "container1" method = "POST" align = "right">
+ 	 			  
+{% for table in tables %}
+          
+            {{ table|safe }}
+{% endfor %}
+ </form>
+ 
+
+<h2 style="color:white" align = "center">IPL batsman VS venue ANALYSIS</h2>
+
+  <form  class="container" method = "POST" align = "center">
     <h1>Batsman Vs venue</h1>
 
     <label for="email"><b>batsman name</b></label>
     <input type="text" placeholder="Enter batsman name" name="batsman" required>
+	
+	
 
     <label for="psw"><b>venue name</b></label>
     <input type="text" placeholder="Enter venue name" name="venue" required>
-
+    
     <button type="submit" class="btn">submit</button>
+
   </form>
 
 </div>
