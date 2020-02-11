@@ -10,11 +10,37 @@
 
 <style>
 
+table, th {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 12px;
+   background-color: #4CAF50;
+  color:white;
+  font-size: 17px;
+}
+
+
+td{
+background-color: #f1f1f1;
+color: black;
+padding:12px;
+font-size: 20px;
+
+
+
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
 
 body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
+.w3-row-padding img {margin-bottom: 17px}
 
-.w3-sidebar {width: 120px;background: #222;}
+.w3-sidebar {width: 204px;background: #222;}
 
 #main {margin-left: 120px}
 
@@ -101,6 +127,14 @@ body {
   <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p style="color:white">Bat vs ball in venue</p>
   </a>
+  
+   <a href="batVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs team</p>
+  </a>
+  <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Ball vs team</p>
+  </a>
+  
 </nav>
 
 
@@ -111,6 +145,8 @@ body {
     <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">PHOTOS</a>
     <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTACT</a>
 	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONT</a>
+	<a href="batVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTT</a>
+	<a href="ballVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTTT</a>
   </div>
 </div>
 
