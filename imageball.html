@@ -7,8 +7,26 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+
+.buttonload {
+  background-color: white; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+  align:center;
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+  color:black;
+  align:center;
+}
+
 
 table, th {
   border: 1px solid grey;
@@ -62,8 +80,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .container1 {
   position: absolute;
    max-width: 300px auto;
-    margin: 345px;
-	right: 0;
+    margin: 175px;
+	right: 170px;
   background-color: white;
  
 }
@@ -98,7 +116,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 body {
   background-image: url({{ url_for ('static', filename = 'img/cricketbatball.jpg') }});
-  background-size:100% 1200%;
+  background-size:100% 1000%;
   background-repeat: no-repeat;
  
 }
@@ -150,6 +168,7 @@ body {
   </div>
 </div>
 
+<div id="loadingGif" style="display:none"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></div>
 
 
  <form  class =  "container1" method = "POST" align = "right">
@@ -166,13 +185,24 @@ body {
     <h1>Bowler Vs venue</h1>
 
     <label for="email"><b>bowler name</b></label>
-    <input type="text" placeholder="Enter batsman name" name="bowler" required>
+    <input type="text" placeholder="Enter bowler name" name="bowler" >
 
     <label for="psw"><b>venue name</b></label>
-    <input type="text" placeholder="Enter bowler name" name="venue" required>
+    <input type="text" placeholder="Enter venue name" name="venue" >
 
-    <button type="submit" class="btn">submit</button>
-					  
+    <button type="submit" class="btn" onclick="myFunction()">submit</button>
+	 <div id = "load" style="display:none;">	
+<button class="buttonload" id="load" >
+  <i class="fa fa-refresh fa-spin"></i>
+</button>
+</div>	
+	<script>
+function myFunction() {
+  document.getElementById("load").style.display = "block";
+ 
+}
+</script>
+				  
 	
   </form>
 

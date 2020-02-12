@@ -12,6 +12,25 @@
 <style>
 
 
+.buttonload {
+  background-color: white; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+  align:center;
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+  color:black;
+  align:center;
+}
+
+
+
 table, th {
   border: 1px solid grey;
   border-collapse: collapse;
@@ -64,8 +83,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .container1 {
   position: absolute;
    max-width: 300px auto;
-    margin: 350px;
-	right : 0;
+    margin: 175px;
+	right : 170px;
   background-color: white;
  
 }
@@ -101,8 +120,8 @@ input[type=text]:focus, input[type=password]:focus {
   opacity: 1;
 }
 body {
-  background-image: url({{ url_for ('static', filename = 'img/hb.jpg') }});
-  background-size:100% 1200%;
+  background-image: url({{ url_for ('static', filename = 'img/oldball.jpg') }});
+  background-size:100% 1000%;
   background-repeat: no-repeat;
  
 }
@@ -158,7 +177,7 @@ body {
 
 
  <form  class =  "container1" method = "POST" align = "right">
- 	 			  
+	 
 {% for table in tables %}
            
             {{ table|safe }}
@@ -175,8 +194,8 @@ body {
                    
 				   <br>
 				   
-				   <datalist id="myUL2" name="batsman">
-				     <select>
+				   <datalist id="myUL2" name="batsman" required>
+				     <select required>
                     <option value = "DA Warner">David Warner</option value>
                     <option value = "S Dhawan">shikhar dhawan</option value>
 					<option value = "MC Henriques">Moises Henriques</option value>
@@ -701,7 +720,18 @@ body {
 						
 						
                   bowler: <input type="text" name="bowler"><br>
-                  <input type="submit" value="Submit" class="btn"><br>
+                  <button type="submit" class="btn" onclick="myFunction()">submit</button>
+	 <div id = "load" style="display:none;">	
+<button class="buttonload" id="load" >
+  <i class="fa fa-refresh fa-spin"></i>
+</button>
+</div>	
+	<script>
+function myFunction() {
+  document.getElementById("load").style.display = "block";
+ 
+}
+</script>
 				  
   </form>
 

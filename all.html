@@ -14,6 +14,25 @@
 
 
 
+.buttonload {
+  background-color: white; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 9px 9px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+  align:center;
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+  color:black;
+  align:center;
+}
+
+
+
 table, th {
   border: 1px solid grey;
   border-collapse: collapse;
@@ -56,6 +75,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   position: absolute;
   right: 0;
   margin: 20px;
+  margin-top:0px;
+  margin-bottom:0px;
   max-width: 300px;
   padding: 16px;
   background-color: white;
@@ -64,8 +85,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .container1 {
   position: absolute;
    max-width: 300px auto;
-    margin: 364px;
-	right : 0;
+    margin: 175px;
+	right : 170px;
   background-color: white;
  
 }
@@ -99,8 +120,8 @@ input[type=text]:focus, input[type=password]:focus {
   opacity: 1;
 }
 body {
-  background-image: url({{ url_for ('static', filename = 'img/bbg.jpg') }});
-  background-size:100% 1200%;
+  background-image: url({{ url_for ('static', filename = 'img/kit.jpg') }});
+  background-size:100% 1050%;
   background-repeat: no-repeat;
  
 }
@@ -172,16 +193,25 @@ body {
     <h1>Batsman Vs venue</h1>
 
     <label for="email"><b>batsman name</b></label>
-    <input type="text" placeholder="Enter batsman name" name="batsman" required>
+    <input type="text" placeholder="Enter batsman name" name="batsman">
 	
 	<label for ="email"><b>bowler name</b></label>
-	<input type="text" placeholder="enter bowler name" name="bowler" required>
+	<input type="text" placeholder="enter bowler name" name="bowler">
 
     <label for="psw"><b>venue name</b></label>
-    <input type="text" placeholder="Enter venue name" name="venue" required>
-   
-    <button type="submit" class="btn">submit</button>
-	<table>
+    <input type="text" placeholder="Enter venue name" name="venue" >
+   <button type="submit" class="btn" onclick="myFunction()">submit</button>
+	 <div id = "load" style="display:none;">	
+<button class="buttonload" id="load" >
+  <i class="fa fa-refresh fa-spin"></i>
+</button>
+</div>	
+	<script>
+function myFunction() {
+  document.getElementById("load").style.display = "block";
+ 
+}
+</script>
 
 
   </form>

@@ -12,10 +12,56 @@
 <style>
 
 
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
+.buttonload {
+  background-color: white; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+  align:center;
+}
 
-.w3-sidebar {width: 120px;background: #222;}
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+  color:black;
+  align:center;
+}
+
+
+
+table, th {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 12px;
+   background-color: #4CAF50;
+  color:white;
+  font-size: 17px;
+}
+
+
+td{
+background-color: #f1f1f1;
+color: black;
+padding:12px;
+font-size: 20px;
+
+
+
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 17px}
+
+.w3-sidebar {width: 204px;background: #222;}
 
 #main {margin-left: 120px}
 
@@ -35,8 +81,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .container1 {
   position: absolute;
    max-width: 300px auto;
-    margin: 334px;
-	right : 0;
+    margin: 175px;
+	right : 170px;
   background-color: white;
  
 }
@@ -72,7 +118,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 body {
   background-image: url({{ url_for ('static', filename = 'img/cricketball.jpg') }});
-  background-size:100% 1200%;
+  background-size:100% 1000%;
   background-repeat: no-repeat;
  
 }
@@ -101,6 +147,13 @@ body {
   <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p style="color:white">Bat vs ball in venue</p>
   </a>
+    <a href="batVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs team</p>
+  </a>
+  
+  <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Ball vs team</p>
+  </a>
 </nav>
 
 
@@ -111,6 +164,8 @@ body {
     <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">PHOTOS</a>
     <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTACT</a>
 	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONT</a>
+	<a href="batVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTT</a>
+	<a href="ballVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTTT</a>
   </div>
 </div>
 
@@ -130,14 +185,24 @@ body {
     <h1>Batsman Vs venue</h1>
 
     <label for="email"><b>batsman name</b></label>
-    <input type="text" placeholder="Enter batsman name" name="batsman" required>
+    <input type="text" placeholder="Enter batsman name" name="batsman">
 	
 	
 
     <label for="psw"><b>venue name</b></label>
-    <input type="text" placeholder="Enter venue name" name="venue" required>
-    
-    <button type="submit" class="btn">submit</button>
+    <input type="text" placeholder="Enter venue name" name="venue">
+    <button type="submit" class="btn" onclick="myFunction()">submit</button>
+	 <div id = "load" style="display:none;">	
+<button class="buttonload" id="load" >
+  <i class="fa fa-refresh fa-spin"></i>
+</button>
+</div>	
+	<script>
+function myFunction() {
+  document.getElementById("load").style.display = "block";
+ 
+}
+</script>
 
   </form>
 

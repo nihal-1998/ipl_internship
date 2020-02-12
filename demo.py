@@ -67,28 +67,28 @@ def home():
 			#	out = batsman_data_1.player_dismissed.notnull().astype('int').sum()
 				run1 = np.asarray(runs)
 				df_list = run1.tolist()
-				JSONP_data = jsonpify(df_list)
+				#JSONP_data = jsonpify(df_list)
 			
 				balls1 = np.asarray(balls)
 				df_list1 = balls1.tolist()
-				JSONP_data1 = jsonpify(df_list1)
+		#		JSONP_data1 = jsonpify(df_list1)
 			
 				out1 = np.asarray(outss)
 				df_list2 = out1.tolist()
-				JSONP_data2 = jsonpify(df_list2)
+		#		JSONP_data2 = jsonpify(df_list2)
 			
 				str1 = (run1/balls1)*100
 				df_list3 = str1.tolist()
-				JSONP_data3 = jsonpify(df_list3)
-				print(JSONP_data)
+		#		JSONP_data3 = jsonpify(df_list3)
+		#		print(JSONP_data)
 #			 answer = [JSONP_data,JSONP_data1,JSONP_data2]
 				answer = {'runs':df_list,'balls':df_list1,'out':df_list2,'strike rate':df_list3}
 			
 #			d = json.dumps(d)
-				ds = np.asarray(delivery_data)
-				dds = ds.tolist()
-				response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
-				an=response
+		#		ds = np.asarray(delivery_data)
+		#		dds = ds.tolist()
+		#		response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+		#		an=response
 				df = pd.DataFrame(answer,index=[0])
 				return render_template('imagebat.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 				#jsonpify(answer)
@@ -132,7 +132,7 @@ def home_2():
 			over = (balls1/6)
 			economy = (runs/over)
 			average = (runs/wick)
-
+         
 			num_inni = np.asarray(inning)
 			df_list1 = num_inni.tolist()
 
@@ -148,11 +148,11 @@ def home_2():
 			num_economy = np.asarray(economy)
 			df_list5 = num_economy.tolist()
 			
-			ball_answer = abc.values.tolist()
+		#	ball_answer = abc.values.tolist()
 		
 			answer = {'number of innings':df_list1,'total runs':df_list2,'total wickets':df_list3,'average':df_list4 ,'economy':df_list5}
-			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
-			an=response
+			#response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+			#an=response
 			df = pd.DataFrame(answer,index=[0])
 			return render_template('imageball.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 			
@@ -233,12 +233,12 @@ def home_1():
 		     
 			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4,'outs' :df_list5,'average':df_list6}
 			
-			bat_vs_venue = abc.drop(columns=['batting first'])
+	#		bat_vs_venue = abc.drop(columns=['batting first'])
 #			bat_array = bat_vs_venue.reset_index().values
-			bat_answer = abc.values.tolist()
+		#	bat_answer = abc.values.tolist()
 			
-			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
-			an=response
+		#	response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+		#	an=response
 			df = pd.DataFrame(answer,index=[0])
 			return render_template('batvenue.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 			
@@ -294,9 +294,9 @@ def home_3():
 			
 			
 			answer = {'runs':df_list,'balls':df_list1,'out':df_list2,'strike rate':df_list3}
-			an = jsonpify(answer)
-			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
-			an=response
+			#an = jsonpify(answer)
+			#response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+			#an=response
 			df = pd.DataFrame(answer,index=[0])
 			return render_template('all.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 			
@@ -371,7 +371,7 @@ def home_4():
 			
 			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4,'outs' :df_list5,'average':df_list6}
 			
-			response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
+			#response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
 			df = pd.DataFrame(answer,index=[0])
 			return render_template('batvsteam.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 
@@ -438,4 +438,4 @@ def home_5():
 			
 			
 if __name__=='__main__':
-	app.run	(debug=True)
+	app.run	(debug=True,threaded=True)
