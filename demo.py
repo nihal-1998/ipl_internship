@@ -4,11 +4,14 @@ import json
 import numpy as np 
 from flask_jsonpify import jsonpify
 import pandas as pd 
+from gevent.pywsgi import WSGIServer
+from gevent import monkey
 #import matplotlib.pyplot as plt
 #from sklearn import preprocessing,cross_validation
 #from sklearn import linear_model
 #from subprocess import check_output
 
+monkey.patch_all()
 
 app = Flask(__name__)
 
@@ -89,8 +92,8 @@ def home():
 		#		dds = ds.tolist()
 		#		response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
 		#		an=response
-				df = pd.DataFrame(answer,index=[0])
-				return render_template('imagebat.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+				df = pd.DataFrame(answer,index=['stats'])
+				return render_template('imagebat.html',tables=[df.to_html(classes='data')], titles=df.columns.values,batsman=name,bowler=name2,vs="Vs")
 				#jsonpify(answer)
 
 
@@ -153,8 +156,8 @@ def home_2():
 			answer = {'number of innings':df_list1,'total runs':df_list2,'total wickets':df_list3,'average':df_list4 ,'economy':df_list5}
 			#response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
 			#an=response
-			df = pd.DataFrame(answer,index=[0])
-			return render_template('imageball.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+			df = pd.DataFrame(answer,index=['stats'])
+			return render_template('imageball.html',tables=[df.to_html(classes='data')], titles=df.columns.values,bowler=name,venue1=name2,vs="Vs")
 			
 
 
@@ -239,8 +242,8 @@ def home_1():
 			
 		#	response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
 		#	an=response
-			df = pd.DataFrame(answer,index=[0])
-			return render_template('batvenue.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+			df = pd.DataFrame(answer,index=['stats'])
+			return render_template('batvenue.html',tables=[df.to_html(classes='data')], titles=df.columns.values,batsman=name,venue1=name2,vs="Vs")
 			
 		
 
@@ -297,8 +300,8 @@ def home_3():
 			#an = jsonpify(answer)
 			#response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
 			#an=response
-			df = pd.DataFrame(answer,index=[0])
-			return render_template('all.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+			df = pd.DataFrame(answer,index=['stats'])
+			return render_template('all.html',tables=[df.to_html(classes='data')], titles=df.columns.values,batsman=name,bowler=name2,venue1=name3,vs="Vs",In="In")
 			
 
 @app.route('/batVsteam')
@@ -372,8 +375,8 @@ def home_4():
 			answer = {'centuries':df_list,'half-centuries':df_list1,'strike rate':df_list2,'total run':df_list3 ,'innings':df_list4,'outs' :df_list5,'average':df_list6}
 			
 			#response = json.dumps(answer, sort_keys = True, indent = 4, separators = (',', ': '))
-			df = pd.DataFrame(answer,index=[0])
-			return render_template('batvsteam.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+			df = pd.DataFrame(answer,index=['stats'])
+			return render_template('batvsteam.html',tables=[df.to_html(classes='data')], titles=df.columns.values,batsman=name,team1=name2,vss ="Vs")
 
 
 @app.route('/ballVsteam')
@@ -405,7 +408,7 @@ def home_5():
 			df=pd.DataFrame(data=bowling_first,columns=['team1','batting_first','balls','runs','out'])
 			datatoss = df.drop(['batting_first'],axis = 1) 
 			abc = datatoss[datatoss.balls!=0]
-			abc1 = abc[abc.team1==name2]
+			abc1 = df[df.team1==name2]
 			
 			inning = len(abc1.index)
 			wick = abc1.out.sum()
@@ -430,12 +433,15 @@ def home_5():
 			num_economy = np.asarray(economy)
 			df_list5 = num_economy.tolist()
 			
-			ball_answer = abc.values.tolist()
+			#ball_answer = abc.values.tolist()
 		
 			answer = {'number of innings':df_list1,'total runs':df_list2,'total wickets':df_list3,'average':df_list4 ,'economy':df_list5}
-			df = pd.DataFrame(answer,index=[0])
-			return render_template('ballvsteam.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+			df = pd.DataFrame(answer,index=['stats'])
+			return render_template('ballvsteam.html',tables=[df.to_html(classes='data')], titles=df.columns.values,bowler=name,team1=name2,vs="Vs")
 			
 			
 if __name__=='__main__':
-	app.run	(debug=True,threaded=True)
+     # http = WSGIServer(('', 9000), app.wsgi_app) 
+     # Serve your application
+     # http.serve_forever()
+	 app.run	(debug=True,threaded=True)

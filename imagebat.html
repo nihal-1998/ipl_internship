@@ -176,10 +176,12 @@ body {
 
 
 
- <form  class =  "container1" method = "POST" align = "right">
-	 
+ <form  class =  "container1" style="background-color:#f1f1f1" method = "POST" align = "right">
+<h3 align="center">	 {{ batsman }}   {{ vs }}  {{ bowler }} </h3> 
+	
+	
 {% for table in tables %}
-           
+            
             {{ table|safe }}
 {% endfor %}
  </form>
