@@ -37,7 +37,7 @@ delivery_data=pd.read_csv("deliveries_till_2019.csv")
 match_data=pd.read_csv("matches_till_2019.csv")
 
 
-@app.route('/')
+@app.route('/home')
 def website_home():
 		return render_template('tem.html')
 
