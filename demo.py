@@ -34,6 +34,7 @@ app = Flask(__name__)
 #database.commit()
 
 delivery_data=pd.read_csv("deliveries_till_2019.csv")
+delivery_data = delivery_data.replace(np.nan, '', regex=True)
 match_data=pd.read_csv("matches_till_2019.csv")
 
 
