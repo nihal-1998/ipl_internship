@@ -37,7 +37,7 @@ delivery_data=pd.read_csv("deliveries_till_2019.csv")
 match_data=pd.read_csv("matches_till_2019.csv")
 
 
-@app.route('/home')
+@app.route('/')
 def website_home():
 		return render_template('tem.html')
 
@@ -60,7 +60,7 @@ def home():
 				runs = batsman_data_1.batsman_runs.sum()
 				outss=0
 				for outs in batsman_data_1.dismissal_kind:
-						if ((outs!="\r")&(outs!="run out\r")):
+						if ((outs!="")&(outs!="run out")):
 							
 								outss = outss + 1
 					    
@@ -117,7 +117,7 @@ def home_2():
 							runs=0
 							balls = 0
 #							ta=bowler_data[(bowler_data.match_id==match)&(bowler_data.dismissal_kind!='run out\r')&(bowler_data.dismissal_kind!='\r')].player_dismissed.sum()
-							for wks in bowler_data[(bowler_data.match_id==match)&(bowler_data.dismissal_kind!='run out\r')&(bowler_data.dismissal_kind!='\r')].player_dismissed:
+							for wks in bowler_data[(bowler_data.match_id==match)&(bowler_data.dismissal_kind!='run out')&(bowler_data.dismissal_kind!='')].player_dismissed:
 								if wks!='':
 									wk = wk+1
 							t=bowler_data[bowler_data.match_id==match].total_runs.sum()
@@ -272,7 +272,7 @@ def home_3():
 							t=batsman_data_1[batsman_data_1.match_id==match].batsman_runs.sum()
 							runs=runs+t
 #           				print(runs)
-							out = out+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.player_dismissed==name)&(batsman_data_1.dismissal_kind!='run out\r')])
+				                        out = out+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.player_dismissed==name)&(batsman_data_1.dismissal_kind!='run out')])
 							balls=balls+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.wide_runs==0)&(batsman_data_1.noball_runs==0)])
 							batting_first=batting_first+[[venue,1,balls,t,out]]
 			batvs_venue = pd.DataFrame(batting_first,columns=['venue','batting first','balls','runs','out'])
@@ -400,7 +400,7 @@ def home_5():
             #team2 = match_data[match_data.id==ids1].team2
 					t=bowler_data[bowler_data.match_id==ids].total_runs.sum()
 					runs=runs+t
-					out = out+len(bowler_data[(bowler_data.match_id==ids)&(bowler_data.dismissal_kind!='run out\r')&(bowler_data.dismissal_kind!='\r')])
+					out = out+len(bowler_data[(bowler_data.match_id==ids)&(bowler_data.dismissal_kind!='run out')&(bowler_data.dismissal_kind!='')])
 					balls=balls+len(bowler_data[(bowler_data.match_id==ids)&(bowler_data.wide_runs==0)&(bowler_data.noball_runs==0)])
 					bowling_first=bowling_first+[[team1,1,balls,runs,out]]
 
