@@ -15,26 +15,26 @@ from gevent import monkey
 
 app = Flask(__name__)
 
-import mysql.connector
-database=mysql.connector.connect(host='localhost',user='root',passwd='hari1998',database='ipl-ball-by-ball')
-cursor=database.cursor()
+#import mysql.connector
+#database=mysql.connector.connect(host='localhost',user='root',passwd='hari1998',database='ipl-ball-by-ball')
+#cursor=database.cursor()
 
 
 
-query2 = "select * from iplmatch"
+#query2 = "select * from iplmatch"
 #cursor.execute(query2)
 #table_ = cursor.fetchall()
-match_data = pd.read_sql(query2,database)
+#match_data = pd.read_sql(query2,database)
 
-query="select * from ball"
+#query="select * from ball"
 #cursor.execute(query)
 #table_rows = cursor.fetchall()
-delivery_data = pd.read_sql(query,database)
+#delivery_data = pd.read_sql(query,database)
 
-database.commit()
+#database.commit()
 
-#delivery_data=pd.read_csv("deliveries_till_2019.csv")
-#match_data=pd.read_csv("matches_till_2019.csv")
+delivery_data=pd.read_csv("deliveries_till_2019.csv")
+match_data=pd.read_csv("matches_till_2019.csv")
 
 
 @app.route('/home')
