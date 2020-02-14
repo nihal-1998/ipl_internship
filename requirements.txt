@@ -1,5 +1,3 @@
-Package                            Version
----------------------------------- -----------
 -ryptography                       1.5
 absl-py                            0.3.0
 alabaster                          0.7.9
