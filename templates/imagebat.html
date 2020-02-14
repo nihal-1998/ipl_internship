@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script data-require="angular.js@1.2.15" data-semver="1.2.15" src="//code.angularjs.org/1.2.15/angular.js"></script>
+<style>
+
+
+.buttonload {
+  background-color: white; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+  align:center;
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+  color:black;
+  align:center;
+}
+
+
+
+table, th {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 12px;
+   background-color: #4CAF50;
+  color:white;
+  font-size: 17px;
+}
+
+
+td{
+background-color: #f1f1f1;
+color: black;
+padding:12px;
+font-size: 20px;
+
+
+
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 17px}
+
+.w3-sidebar {width: 204px;background: #222;}
+
+#main {margin-left: 120px}
+
+@media only screen and (max-width: 600px) {main {margin-left: 0;}}
+
+
+
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}
+
+
+.container1 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 175px;
+	right : 170px;
+  background-color: white;
+ 
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+body {
+  background-image: url({{ url_for ('static', filename = 'img/oldball.jpg') }});
+  background-size:100% 1000%;
+  background-repeat: no-repeat;
+ 
+}
+
+
+</style>
+</head>
+<body>
+
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  
+  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:100%"/>
+  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <p>HOME</p>
+  </a>
+  <a href="batVsBall" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS BOWLER</p>
+  </a>
+  <a href="batVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS VENUE</p>
+  </a>
+  <a href="ballVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BOWLER VS VENUE</p>
+	</a>
+  <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs ball in venue</p>
+  </a>
+  
+   <a href="batVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs team</p>
+  </a>
+  <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Ball vs team</p>
+  </a>
+  
+</nav>
+
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="batVsBall" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ABOUT</a>
+    <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">PHOTOS</a>
+    <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTACT</a>
+	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONT</a>
+	<a href="batVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTT</a>
+	<a href="ballVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTTT</a>
+  </div>
+</div>
+
+
+
+
+ <form  class =  "container1" style="background-color:#f1f1f1" method = "POST" align = "right">
+<h3 align="center">	 {{ batsman }}   {{ vs }}  {{ bowler }} </h3> 
+	
+	
+{% for table in tables %}
+            
+            {{ table|safe }}
+{% endfor %}
+ </form>
+ 
+<h2 style="color:white" align = "center">IPL BATSMAN VS BOWLER ANALYSIS</h2>
+
+  <form  class="container" method = "POST" align = "center">
+    <h1>Batsman Vs Bowler</h1>
+
+                        batsman:
+		                <input type="text" placeholder="Search batsman name..." id="myInput" list="myUL2" name = "batsman">
+                   
+				   <br>
+				   
+				   <datalist id="myUL2" name="batsman" required>
+				     <select required>
+                    <option value = "DA Warner">David Warner</option value>
+                    <option value = "S Dhawan">shikhar dhawan</option value>
+					<option value = "MC Henriques">Moises Henriques</option value>
+                    <option value = "Yuvraj Singh">Yuvraj Singh</option value>
+					<option value = "DJ Hooda">Deepak Hooda</option value>
+                    <option value = "BCJ Cutting">Ben Cutting</option value>
+					<option value = "CH Gayle">Chris Gayle</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "TM Head">Travis Head</option value>
+                    <option value = "KM Jadhav">Kedar Jadhav</option value>
+					<option value = "SR Watson">Shane Watson</option value>
+                    <option value = "Sachin Baby">Sachin Baby</option value>
+					<option value = "STR Binny">Stuart Binny</option value>
+                    <option value = "S Aravind">Sreenath Aravind</option value>
+					<option value = "YS Chahal">Yuzvendra Chahal</option value>
+                    <option value = "TS Mills">Tymal Mills</option value>
+					<option value = "A Choudhary">Aniket Choudhary</option value>
+                    <option value = "PA Patel">Parthiv Patel</option value>
+					<option value = "JC Buttler">Jos Buttler</option value>
+                    <option value = "RG Sharma">rohit sharma</option value>
+					<option value = "N Rana">Nitish Rana</option value>
+                    <option value = "AT Rayudu">Ambati Rayudu</option value>
+					<option value = "KH Pandya">Krunal Pandya</option value>
+                    <option value = "KA Pollard">Kieron Pollard</option value>
+					<option value = "HH Pandya">Hardik Pandya</option value>
+                    <option value = "TG Southee">Tim Southee</option value>
+					<option value = "AM Rahane">Ajinkya Rahane</option value>
+                    <option value = "MA Agarwal">Mayank Agarwal</option value>
+					<option value = "SPD Smith">Steve Smith</option value>
+                    <option value = "BA Stokes">Ben Stokes</option value>
+					<option value = "MS Dhoni">Mahendra Singh Dhoni</option value>
+                    <option value = "JJ Roy">Jason Roy</option value>
+					<option value = "BB McCullum">Brendon McCullum</option value>
+                    <option value = "SK Raina">Suresh Raina</option value>
+					<option value = "AJ Finch">Aaron Finch</option value>
+                    <option value = "KD Karthik">Dinesh Karthik</option value>
+					<option value = "G Gambhir">Gautam Gambhir</option value>
+                    <option value = "CA Lynn">Chris Lynn</option value>
+					<option value = "MK Tiwary">Manoj Tiwary</option value>
+                    <option value = "DT Christian">Dan Christian</option value>
+					<option value = "HM Amla">Hashim Amla</option value>
+                    <option value = "M Vohra">Manan Vohra</option value>
+					<option value = "WP Saha">Wriddhiman Saha</option value>
+                    <option value = "AR Patel">Axar Patel</option value>
+					<option value = "GJ Maxwell">Glenn Maxwell</option value>
+                    <option value = "DA Miller">David Miller</option value>
+					<option value = "Vishnu Vinod">Vishnu Vinod</option value>
+                    <option value = "Iqbal Abdulla">Iqbal Abdulla</option value>
+					<option value = "P Negi">Pawan Negi</option value>
+                    <option value = "AP Tare">Aditya Tare</option value>
+					<option value = "SW Billings">Sam Billings</option value>
+                    <option value = "KK Nair">Karun Nair</option value>
+					<option value = "SV Samson">Sanju Samson</option value>
+                    <option value = "RR Pant">Rishabh Pant</option value>
+					<option value = "CH Morris">Chris Morris</option value>
+					<option value = "CR Brathwaite">Carlos Brathwaite</option value>
+                    <option value = "PJ Cummins">Pat Cummins</option value>
+					<option value = "A Mishra">Amit Mishra</option value>
+                    <option value = "S Nadeem">Shahbaz Nadeem</option value>
+					<option value = "Z Khan">Zaheer Khan</option value>
+                    <option value = "DR Smith">Dwayne Smith</option value>
+					<option value = "DS Kulkarni">Dhawal Kulkarni</option value>
+                    <option value = "P Kumar">Praveen Kumar</option value>
+					<option value = "Basil Thampi">Basil Thampi</option value>
+                    <option value = "RV Uthappa">Robin Uthappa</option value>
+					<option value = "MK Pandey">Manish Pandey</option value>
+                    <option value = "YK Pathan">Yusuf Pathan</option value>
+					<option value = "SA Yadav">Suryakumar Yadav</option value>
+                    <option value = "CR Woakes">Chris Woakes</option value>
+					<option value = "SP Narine">Sunil Narine</option value>
+                    <option value = "Harbhajan Singh">Harbhajan Singh</option value>
+					<option value = "AB de Villiers">AB de Villiers</option value>
+                    <option value = "CJ Anderson">Corey Anderson</option value>
+					<option value = "F du Plessis">Faf du Plessis</option value>
+                    <option value = "RA Tripathi">Rahul Tripathi</option value>
+					<option value = "R Bhatia">Rajat Bhatia</option value>
+                    <option value = "DL Chahar">Deepak Chahar</option value>
+					<option value = "A Zampa">Adam Zampa</option value>
+                    <option value = "AB Dinda">Ashoke Dinda</option value>
+					<option value = "Imran Tahir">Imran Tahir</option value>
+                    <option value = "NV Ojha">Naman Ojha</option value>
+					<option value = "V Shankar">Vijay Shankar</option value>
+                    <option value = "Rashid Khan">Rashid Khan</option value>
+					<option value = "B Kumar">Bhuvneshwar Kumar</option value>
+                    <option value = "MP Stoinis">Marcus Stoinis</option value>
+					<option value = "MM Sharma">Mohit Sharma</option value>
+                    <option value = "VR Aaron">Varun Aaron</option value>
+					<option value = "V Kohli">Virat Kohli</option value>
+                    <option value = "MJ McClenaghan">Mitchell McClenaghan</option value>
+					<option value = "Ankit Sharma">Ankit Sharma</option value>
+					<option value = "SN Thakur">Shardul Thakur</option value>
+                    <option value = "RD Chahar">Rahul Chahar</option value>
+					<option value = "LH Ferguson">Lockie Ferguson</option value>
+                    <option value = "C de Grandhomme">Colin de Grandhomme</option value>
+					<option value = "Bipul Sharma">Bipul Sharma</option value>
+                    <option value = "SS Iyer">Shreyas Iyer</option value>
+					<option value = "EJG Morgan">Eoin Morgan</option value>
+                    <option value = "KC Cariappa">Konganda Charamanna Cariappa</option value>
+					<option value = "Sandeep Sharma">Sandeep Sharma</option value>
+                    <option value = "Ishan Kishan">Ishan Kishan</option value>
+					<option value = "JD Unadkat">Jaydev Unadkat</option value>
+                    <option value = "AF Milne">Adam Milne</option value>
+					<option value = "S Badree">Samuel Badree</option value>
+                    <option value = "AD Mathews">Angelo Mathews</option value>
+					<option value = "Mohammed Shami">Mohammed Shami</option value>
+                    <option value = "Mohammad Nabi">Mohammad Nabi</option value>
+					<option value = "I Sharma">Ishant Sharma</option value>
+                    <option value = "RA Jadeja">Ravindra Jadeja</option value>
+					<option value = "AJ Tye">Andrew Tye</option value>
+                    <option value = "KS Williamson">Kane Williamson</option value>
+					<option value = "SE Marsh">Shaun Marsh</option value>
+                    <option value = "Shakib Al Hasan">Shakib Al Hasan</option value>
+					<option value = "JP Faulkner">James Faulkner</option value>
+                    <option value = "MG Johnson">Mitchell Johnson</option value>
+					<option value = "K Rabada">Kagiso Rabada</option value>
+                    <option value = "AD Nath">Akshdeep Nath</option value>
+					<option value = "NM Coulter-Nile">NM Coulter-Nile</option value>
+                    <option value = "Kuldeep Yadav">Kuldeep Yadav</option value>
+					<option value = "UT Yadav">Umesh Yadav</option value>
+                    <option value = "Washington Sundar">Washington Sundar</option value>
+					<option value = "KV Sharma">Karn Sharma</option value>
+                    <option value = "DM Bravo">Darren Bravo</option value>
+					<option value = "AR Bawne">Ankit Bawne</option value>
+                    <option value = "SP Jackson">Sheldon Jackson</option value>
+					<option value = "MJ Guptill">Martin Guptill</option value>
+					<option value = "Anureet Singh">Anureet Singh</option value>
+                    <option value = "IK Pathan">Irfan Pathan</option value>
+					<option value = "Ankit Soni">Ankit Soni</option value>
+                    <option value = "JJ Bumrah">JJ Bumrah</option value>
+					<option value = "SL Malinga">SL Malinga</option value>
+                    <option value = "PJ Sangwan">Pradeep Sangwan</option value>
+					<option value = "S Kaul">Siddarth Kaul</option value>
+                    <option value = "LMP Simmons">Lendl Simmons</option value>
+					<option value = "MN Samuels">Marlon Samuels</option value>
+                    <option value = "Swapnil Singh">Swapnil Singh</option value>
+					<option value = "R Tewatia">Rahul Tewatia</option value>
+                    <option value = "MM Patel">Munaf Patel</option value>
+					<option value = "SS Tiwary">Saurabh Tiwary</option value>
+                    <option value = "TA Boult">Trent Boult</option value>
+					<option value = "CJ Jordan">Chris Jordan</option value>
+                    <option value = "IR Jaggi">Ishank Jaggi</option value>
+					<option value = "PP Chawla">Piyush Chawla</option value>
+                    <option value = "AS Rajpoot">Ankit Rajpoot</option value>
+					<option value = "SC Ganguly">Sourav Ganguly</option value>
+                    <option value = "RT Ponting">Ricky Ponting</option value>
+					<option value = "DJ Hussey">David Hussey</option value>
+                    <option value = "Mohammad Hafeez">Mohammad Hafeez</option value>
+					<option value = "R Dravid">Rahul Dravid</option value>
+                    <option value = "W Jaffer">W Jaffer</option value>
+					<option value = "JH Kallis">Jacques Kallis</option value>
+                    <option value = "CL White">Cameron White</option value>
+					<option value = "MV Boucher">MV Boucher</option value>
+                    <option value = "B Akhil">B Akhil</option value>
+					<option value = "AA Noffke">AA Noffke</option value>
+                    <option value = "SB Joshi">SB Joshi</option value>
+					<option value = "ML Hayden">ML Hayden</option value>
+                    <option value = "MEK Hussey">MEK Hussey</option value>
+					<option value = "S Badrinath">S Badrinath</option value>
+                    <option value = "K Goel">K Goel</option value>
+					<option value = "JR Hopes">JR Hopes</option value>
+                    <option value = "KC Sangakkara">KC Sangakkara</option value>
+					<option value = "SM Katich">SM Katich</option value>
+                    <option value = "T Kohli">T Kohli</option value>
+					<option value = "M Kaif">M Kaif</option value>
+                    <option value = "DS Lehmann">DS Lehmann</option value>
+					<option value = "M Rawat">M Rawat</option value>
+                    <option value = "D Salunkhe">D Salunkhe</option value>
+					<option value = "SK Warne">SK Warne</option value>
+                    <option value = "SK Trivedi">SK Trivedi</option value>
+					<option value = "V Sehwag">V Sehwag</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					<option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					
+					</select>
+					</datalist>
+					
+					<br>
+						
+						
+                  bowler: <input type="text" name="bowler"><br>
+                  <button type="submit" class="btn" onclick="myFunction()">submit</button>
+	 <div id = "load" style="display:none;">	
+<button class="buttonload" id="load" >
+  <i class="fa fa-refresh fa-spin"></i>
+</button>
+</div>	
+	<script>
+function myFunction() {
+  document.getElementById("load").style.display = "block";
+ 
+}
+</script>
+				  
+  </form>
+
+</div>
+</body>
+</html>

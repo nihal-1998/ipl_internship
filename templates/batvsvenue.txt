@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+   <body>
+   
+   <form method="POST">
+		        
+				  <input type="text" placeholder="Search batsman name..." id="myInput" list="myUL" name = "batsman">
+                   
+				   <br>
+				   
+				   <datalist id="myUL" name="batsman">
+				     <select>
+                    <option value = "V Kohli">virat kohli</option value>
+                    <option value = "S Dhawan">shikhar dhavan</option value>
+					<option value = "RG Sharma">rohit sharma</option value>
+                    <option value = "DA Warner">david warner</option value>
+					<option value = "Yuvraj Singh">Yuvraj Singh</option value>
+                    <option value = "Mandeep Singh">Mandeep Singh</option value>
+					</select>
+					</datalist>
+					
+					<br>	
+					
+					<input type="text" placeholder="Search venue name..." id="myInput1" list="myUL1" name = "venue">
+                   
+				   <br>
+				   
+				   <datalist id="myUL1" name="venue">
+				     <select>
+                    <option value = "Rajiv Gandhi International Stadium, Uppal">Rajiv Gandhi International Stadium, Uppal</option value>
+                    <option value = "M Chinnaswamy Stadium">M Chinnaswamy Stadium</option value>
+					<option value = "Wankhede Stadium">Wankhede Stadium</option value>
+                    <option value = "Feroz Shah Kotla">Feroz Shah Kotla</option value>
+					</select>
+					</datalist>
+				
+				  
+                  <input type="submit" value="Submit"><br>
+				  
+				  
+				  
+              </form>
+   
+   
+   
+   
+   
+   
+   
+   </body>
+			  </html>

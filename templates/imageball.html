@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+.buttonload {
+  background-color: white; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+  align:center;
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+  color:black;
+  align:center;
+}
+
+
+table, th {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 12px;
+   background-color: #4CAF50;
+  color:white;
+  font-size: 17px;
+}
+
+
+td{
+background-color: #f1f1f1;
+color: black;
+padding:12px;
+font-size: 20px;
+
+
+
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 17px}
+
+.w3-sidebar {width: 204px;background: #222;}
+
+#main {margin-left: 120px}
+
+@media only screen and (max-width: 600px) {main {margin-left: 0;}}
+
+
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}
+
+
+.container1 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 175px;
+	right: 170px;
+  background-color: white;
+ 
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+body {
+  background-image: url({{ url_for ('static', filename = 'img/cricketbatball.jpg') }});
+  background-size:100% 1000%;
+  background-repeat: no-repeat;
+ 
+}
+
+
+</style>
+</head>
+<body>
+
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  
+  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:100%"/>
+  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <p>HOME</p>
+  </a>
+  <a href="batVsBall" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS BOWLER</p>
+  </a>
+  <a href="batVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS VENUE</p>
+  </a>
+  <a href="ballVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BOWLER VS VENUE</p>
+	</a>
+  <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs ball in venue</p>
+  </a>
+  
+   <a href="batVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs team</p>
+  </a>
+  <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Ball vs team</p>
+  </a>
+  
+</nav>
+
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="batVsBall" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ABOUT</a>
+    <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">PHOTOS</a>
+    <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTACT</a>
+	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONT</a>
+	<a href="batVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTT</a>
+	<a href="ballVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTTT</a>
+  </div>
+</div>
+
+<div id="loadingGif" style="display:none"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></div>
+
+
+ <form  class =  "container1" style = "background-color:#f1f1f1" method = "POST" align = "right">
+ 	 		<h3 align="center">	 {{ bowler }}   {{vs}}  {{ venue1 }} </h3> 	  
+{% for table in tables %}
+           
+            {{ table|safe }}
+{% endfor %}
+ </form>
+
+<h2 style="color:white" align = "center">IPL bowler VS venue ANALYSIS</h2>
+
+  <form  class="container" method = "POST" align = "center">
+    <h1>Bowler Vs venue</h1>
+
+    <label for="email"><b>bowler name</b></label>
+    <input type="text" placeholder="Enter bowler name" name="bowler" >
+
+    <label for="psw"><b>venue name</b></label>
+    <input type="text" placeholder="Enter venue name" name="venue" >
+
+    <button type="submit" class="btn" onclick="myFunction()">submit</button>
+	 <div id = "load" style="display:none;">	
+<button class="buttonload" id="load" >
+  <i class="fa fa-refresh fa-spin"></i>
+</button>
+</div>	
+	<script>
+function myFunction() {
+  document.getElementById("load").style.display = "block";
+ 
+}
+</script>
+				  
+	
+  </form>
+
+</div>
+</body>
+</html>
