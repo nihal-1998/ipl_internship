@@ -272,7 +272,7 @@ def home_3():
 							t=batsman_data_1[batsman_data_1.match_id==match].batsman_runs.sum()
 							runs=runs+t
 #           				print(runs)
-				                        out = out+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.player_dismissed==name)&(batsman_data_1.dismissal_kind!='run out')])
+							out = out+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.player_dismissed==name)&(batsman_data_1.dismissal_kind!='run out')])
 							balls=balls+len(batsman_data_1[(batsman_data_1.match_id==match)&(batsman_data_1.wide_runs==0)&(batsman_data_1.noball_runs==0)])
 							batting_first=batting_first+[[venue,1,balls,t,out]]
 			batvs_venue = pd.DataFrame(batting_first,columns=['venue','batting first','balls','runs','out'])
