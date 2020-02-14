@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+
+
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 12px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 17px}
+
+.w3-sidebar {width: 204px;background: #222;}
+
+#main {margin-left: 120px}
+
+@media only screen and (max-width: 600px) {main {margin-left: 0;}}
+</style>
+<body class="w3-black">
+
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  
+  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:100%"/>
+  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <p>HOME</p>
+  </a>
+  <a href="batVsBall" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS BOWLER</p>
+  </a>
+  <a href="batVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BATSMAN VS VENUE</p>
+  </a>
+  <a href="ballVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">BOWLER VS VENUE</p>
+	</a>
+  <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs ball in venue</p>
+  </a>
+  
+  <a href="batVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Bat vs team</p>
+  </a>
+  
+  <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p style="color:white">Ball vs team</p>
+  </a>
+</nav>
+
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="batVsBall" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ABOUT</a>
+    <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">PHOTOS</a>
+    <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTACT</a>
+	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONT</a>
+	<a href="batVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTT</a>
+	<a href="ballVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTTT</a>
+  </div>
+</div>
+
+
+<div class="w3-padding-large" id="main">
+ 
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">IPL PLAYER PERFORMANCE</span> ANALYSIS.</h1>
+	
+    <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" alt="boy" class="w3-image" width="500" height="400"/>
+  </header>
+
+  
+  
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+   
+ 
+  </footer>
+
+
+</div>
+
+</body>
+</html>
