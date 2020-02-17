@@ -352,7 +352,7 @@ def home_4():
 			#runs = abc1.runs.sum()
 			#balls = abc1.balls.sum()
 			#outs = abc1.out.sum()
-	        	strike = (runs1/balls)*100
+			strike = (runs1/balls)*100
 			average = (runs1/out)
 			h_cen = 0
 			cen = 0
