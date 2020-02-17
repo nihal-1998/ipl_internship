@@ -108,8 +108,9 @@ def home_2():
 			name = request.form['bowler']
 			name2 = request.form['venue']
 			bowler_data = delivery_data[(delivery_data.bowler==name)]
-			for venue in match_data.venue.unique():
-					matches=match_data[(match_data.venue==venue)].id
+			match_data1 = match_data[(match_data.venue==name2)]
+			for venue in match_data1.venue.unique():
+					matches=match_data1[(match_data1.venue==venue)].id
 					wk=0
 					runs=0
 					balls = 0
@@ -176,8 +177,9 @@ def home_1():
 			name = request.form['batsman']
 			name2 = request.form['venue']
 			batsman_data = delivery_data[(delivery_data.batsman==name)]
-			for venue in match_data.venue.unique():
-					matches=match_data[(match_data.venue==venue)].id
+			match_data1 = match_data[(match_data.venue==name2)]
+			for venue in match_data1.venue.unique():
+					matches=match_data1[(match_data1.venue==venue)].id
 # 			        print(matches)
 					runs=0
 					balls=0
@@ -259,8 +261,9 @@ def home_3():
 			name2 = request.form['bowler']
 			name3 = request.form['venue']
 			batsman_data_1=delivery_data[(delivery_data.batsman==name)&(delivery_data.bowler==name2)]
-			for venue in match_data.venue.unique():
-					matches=match_data[(match_data.venue==venue)].id
+			match_data1 = match_data[(match_data.venue==name3)]
+			for venue in match_data1.venue.unique():
+					matches=match_data1[(match_data1.venue==venue)].id
 # 			        print(matches)
 					runs=0
 					balls=0
@@ -315,36 +318,45 @@ def home_4():
 			name = request.form['batsman']
 			name2 = request.form['team']
 			batting_first=list()
-			batsman_data = delivery_data[(delivery_data.batsman==name)]
-			for ids in match_data.id.unique():
-					runs=0
-					balls=0
-					out=0
-					team1 = batsman_data.bowling_team[batsman_data.match_id==ids].unique()
+			batsman_data = delivery_data[(delivery_data.batsman==name)&(delivery_data.bowling_team==name2)]
+			balls=len(batsman_data[(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
+			runs1 = batsman_data.batsman_runs.sum()
+			out = len(batsman_data[(batsman_data.player_dismissed==name)])
+			innings = len(batsman_data.match_id.unique())
+			for ids in batsman_data.match_id.unique():
+				runs=0
+				t=batsman_data[batsman_data.match_id==ids].batsman_runs.sum()
+				runs=runs+t
+				batting_first=batting_first+[[runs]]
+			df=pd.DataFrame(data=batting_first,columns=['runs'])
+		#	for ids in match_data.id.unique():
+		#			runs=0
+		#			balls=0
+		#			out=0
+		#			team1 = batsman_data.bowling_team[batsman_data.match_id==ids].unique()
             #  print(batsman_data)
             #print(ids1)
             #team1 = match_data[match_data.id==ids1].team1
             #team2 = match_data[match_data.id==ids1].team2
-					t=batsman_data[batsman_data.match_id==ids].batsman_runs.sum()
-					runs=runs+t
-					out = out+len(batsman_data[(batsman_data.match_id==ids)&(batsman_data.player_dismissed==name)])
-					balls=balls+len(batsman_data[(batsman_data.match_id==ids)&(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
-					batting_first=batting_first+[[team1,1,balls,runs,out]]
+			#		t=batsman_data[batsman_data.match_id==ids].batsman_runs.sum()
+			#		runs=runs+t
+			#		out = out+len(batsman_data[(batsman_data.match_id==ids)&(batsman_data.player_dismissed==name)])
+			#		balls=balls+len(batsman_data[(batsman_data.match_id==ids)&(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
+			#		batting_first=batting_first+[[team1,1,balls,runs,out]]
 
 
-			df=pd.DataFrame(data=batting_first,columns=['team1','batting_first','balls','runs','out'])
-			datatoss = df.drop(['batting_first'],axis = 1) 
-			abc = datatoss[datatoss.balls!=0] 
-			abc1 = abc[abc.team1==name2]
-			runs = abc1.runs.sum()
-			balls = abc1.balls.sum()
-			outs = abc1.out.sum()
-			strike = (runs/balls)*100
-			average = (runs/outs)
+			#df=pd.DataFrame(data=batting_first,columns=['team1','batting_first','balls','runs','out'])
+			#datatoss = df.drop(['batting_first'],axis = 1) 
+			#abc = datatoss[datatoss.balls!=0] 
+			#abc1 = abc[abc.team1==name2]
+			#runs = abc1.runs.sum()
+			#balls = abc1.balls.sum()
+			#outs = abc1.out.sum()
+	        	strike = (runs1/balls)*100
+			average = (runs1/out)
 			h_cen = 0
 			cen = 0
-			num_inni = len(abc1.index)
-			for fif in abc1.runs:
+			for fif in df.runs:
 					if((fif>49) & (fif<100)):
 							h_cen = h_cen+1
 					elif(fif>99):
@@ -361,13 +373,13 @@ def home_4():
 			cen1 = np.asarray(cen)
 			df_list = cen1.tolist()
 			
-			total_runs1 = np.asarray(runs)
+			total_runs1 = np.asarray(runs1)
 			df_list3 = total_runs1.tolist()
 			
-			num_inni1 = np.asarray(num_inni)
+			num_inni1 = np.asarray(innings)
 			df_list4 = num_inni1.tolist()
 			
-			num_out = np.asarray(outs)
+			num_out = np.asarray(out)
 			df_list5 = num_out.tolist()
 			
 			num_average = np.asarray(average)
@@ -389,43 +401,26 @@ def home_5():
 			bowling_first = list()
 			name = request.form['bowler']
 			name2 = request.form['team']
-			bowler_data = delivery_data[(delivery_data.bowler==name)]
-			for ids in match_data.id.unique():
-					runs=0
-					balls=0
-					out=0
-					team1 = bowler_data.batting_team[bowler_data.match_id==ids].unique()
-            #  print(batsman_data)
-            #print(ids1)
-            #team1 = match_data[match_data.id==ids1].team1
-            #team2 = match_data[match_data.id==ids1].team2
-					t=bowler_data[bowler_data.match_id==ids].total_runs.sum()
-					runs=runs+t
-					out = out+len(bowler_data[(bowler_data.match_id==ids)&(bowler_data.dismissal_kind!='run out')&(bowler_data.dismissal_kind!='')])
-					balls=balls+len(bowler_data[(bowler_data.match_id==ids)&(bowler_data.wide_runs==0)&(bowler_data.noball_runs==0)])
-					bowling_first=bowling_first+[[team1,1,balls,runs,out]]
-
-
-			df=pd.DataFrame(data=bowling_first,columns=['team1','batting_first','balls','runs','out'])
-			datatoss = df.drop(['batting_first'],axis = 1) 
-			abc = datatoss[datatoss.balls!=0]
-			abc1 = df[df.team1==name2]
+			bowler_data = delivery_data[(delivery_data.bowler==name)&(delivery_data.batting_team==name2)]
+			wk = 0
+			for wks in bowler_data[(bowler_data.dismissal_kind!='run out')&(bowler_data.dismissal_kind!='')].player_dismissed:
+								if wks!='':
+									wk = wk+1
+			t=bowler_data.total_runs.sum()
+			balls=len(bowler_data[(bowler_data.wide_runs==0)&(bowler_data.noball_runs==0)])
+			innings = len(bowler_data.match_id.unique())
 			
-			inning = len(abc1.index)
-			wick = abc1.out.sum()
-			runs = abc1.runs.sum()
-			balls1 = abc1.balls.sum()
-			over = (balls1/6)
-			economy = (runs/over)
-			average = (runs/wick)
+			over = (balls/6)
+			economy = (t/over)
+			average = (t/wk)
 
-			num_inni = np.asarray(inning)
+			num_inni = np.asarray(innings)
 			df_list1 = num_inni.tolist()
 
-			num_runs = np.asarray(runs)
+			num_runs = np.asarray(t)
 			df_list2 = num_runs.tolist()
 
-			num_wickets = np.asarray(wick)
+			num_wickets = np.asarray(wk)
 			df_list3 = num_wickets.tolist()
 
 			num_average = np.asarray(average)
