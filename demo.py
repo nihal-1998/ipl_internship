@@ -35,7 +35,7 @@ app = Flask(__name__)
 
 delivery_data=pd.read_csv("deliveries_till_2019.csv")
 delivery_data = delivery_data.replace(np.nan, '', regex=True)
-match_data=pd.read_csv("matches_till_2019.csv")
+match_data=pd.read_csv("match_data_till_2019_final.csv")
 
 
 @app.route('/')
