@@ -438,6 +438,5 @@ def home_5():
 			
 if __name__=='__main__':
      # http = WSGIServer(('', 9000), app.wsgi_app) 
-     # Serve your application
      # http.serve_forever()
 	 app.run	(debug=True,threaded=True)
