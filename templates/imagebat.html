@@ -79,6 +79,16 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   background-color: white;
 }
 
+.container2 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 10px;
+	left:0px;
+	
+  background-color: white;
+ 
+}
+
 
 .container1 {
   position: absolute;
@@ -127,14 +137,29 @@ body {
 }
 
 
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+ 
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+
 </style>
 </head>
 <body>
 
 
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" id="mySidebar" class="sidebar">
   
-  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:100%"/>
+  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:62%"/>
   <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
     <p>HOME</p>
   </a>
@@ -157,7 +182,7 @@ body {
   <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p style="color:white">Ball vs team</p>
   </a>
-  
+   <button class="openbtn" onclick="closeNav()"> X </button>
 </nav>
 
 
@@ -728,15 +753,31 @@ body {
   <i class="fa fa-refresh fa-spin"></i>
 </button>
 </div>	
+
 	<script>
 function myFunction() {
   document.getElementById("load").style.display = "block";
  
 }
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "204px";
+  document.getElementById("main").style.marginLeft = "0px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
 </script>
 				  
   </form>
+  <form>
+<div class = "container2">
+ 
+ <button class="openbtn" onclick="openNav()">☰</button>
 
-</div>
+</div> 
+</form>
 </body>
 </html>
