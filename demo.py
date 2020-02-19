@@ -37,6 +37,9 @@ delivery_data=pd.read_csv("deliveries_till_2019.csv")
 delivery_data = delivery_data.replace(np.nan, '', regex=True)
 match_data=pd.read_csv("match_data_till_2019_final.csv")
 
+@app.route('/home')
+def website_home_1():
+		return render_template('home.html')
 
 @app.route('/')
 def website_home():
