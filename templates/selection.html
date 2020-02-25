@@ -2,13 +2,34 @@
 <html>
 <head>
 
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
+
+
+.container3 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 10px;
+	right : 574px;
+  background-color: white;
+ 
+}
+
+.container5 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 10px;
+	right : 574px;
+  background-color: white;
+  margin-top:60px;
+ 
+}
 
 .openbtn {
   font-size: 20px;
@@ -23,7 +44,6 @@
 .openbtn:hover {
   background-color: #444;
 }
-
 
 .container2 {
   position: absolute;
@@ -57,12 +77,11 @@
 table, th {
   border: 1px solid grey;
   border-collapse: collapse;
-  padding: 12px;
-   background-color: #4CAF50;
+  background-color: #4CAF50;
   color:white;
+  padding: 12px;
   font-size: 17px;
 }
-
 
 td{
 background-color: #f1f1f1;
@@ -73,6 +92,7 @@ font-size: 20px;
 
 
 }
+
 table tr:nth-child(odd) {
   background-color: #f1f1f1;
 }
@@ -91,23 +111,41 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 @media only screen and (max-width: 600px) {main {margin-left: 0;}}
 
 
-
 /* Add styles to the form container */
 .container {
   position: absolute;
+  height:535px;
   right: 0;
+  margin: 20px;
+  max-width: 448px;
+  padding: 16px;
+  background-color: white;
+  margin-top:0px;
+}
+.container4{
+position: absolute;
+  right: 340px;
   margin: 20px;
   max-width: 300px;
   padding: 16px;
   background-color: white;
+
 }
 
+.container6 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 175px;
+	right: 608px;
+  background-color: white;
+ 
+}
 
 .container1 {
   position: absolute;
    max-width: 300px auto;
     margin: 175px;
-	right: 170px;
+	right: 297px;
   background-color: white;
  
 }
@@ -134,6 +172,7 @@ input[type=text]:focus, input[type=password]:focus {
   border: none;
   cursor: pointer;
   width: 100%;
+  margin-top:115px;
   opacity: 0.9;
 }
 
@@ -141,55 +180,27 @@ input[type=text]:focus, input[type=password]:focus {
   opacity: 1;
 }
 body {
-  background-image: url({{ url_for ('static', filename = 'img/cricketbatball.jpg') }});
-  background-size:100% 1000%;
+  background-image: url({{ url_for ('static', filename = 'img/yelloball.jpg') }});
+  background-size:100% 1100%;
   background-repeat: no-repeat;
  
 }
 
+.row {
+  display: flex;
+}
 
-.container3 {
-  position: absolute;
-   max-width: 300px auto;
-    margin: 20px;
-	right : 461px;
-  background-color: white;
- 
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
 }
 
 </style>
 </head>
 <body>
 
-
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" id="mySidebar" class="sidebar">
-  
-  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:62%"/>
-  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <p>HOME</p>
-  </a>
-  <a href="batVsBall" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">BATSMAN VS BOWLER</p>
-  </a>
-  <a href="batVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">BATSMAN VS VENUE</p>
-  </a>
-  <a href="ballVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">BOWLER VS VENUE</p>
-	</a>
-  <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">Bat vs ball in venue</p>
-  </a>
-  
-   <a href="batVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">Bat vs team</p>
-  </a>
-  <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">Ball vs team</p>
-  </a>
-  <button class="openbtn" onclick="closeNav()"> X </button>
-  
-</nav>
 
 
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
@@ -204,26 +215,45 @@ body {
   </div>
 </div>
 
-<div id="loadingGif" style="display:none"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"></div>
-
 
  <form  class =  "container1" style = "background-color:#f1f1f1" method = "POST" align = "right">
- 	 		<h3 align="center">	 {{ bowler }}   {{vs}}  {{ venue1 }} </h3> 	  
 {% for table in tables %}
-           
+          
+            {{ table|safe }}
+{% endfor %}
+ </form>
+ 
+ 
+ <form  class =  "container6" style = "background-color:#f1f1f1" method = "POST" align = "right">
+{% for table in tables2 %}
+          
             {{ table|safe }}
 {% endfor %}
  </form>
 
-<h2 style="color:white" align = "center">IPL bowler VS venue ANALYSIS</h2>
+<h2 style="color:white" align = "center"> Smart selection:Batsman Vs Bowler</h2>
 
   <form  class="container" method = "POST" align = "center">
-    <h1>Bowler Vs venue</h1>
-
-    <label for="email"><b>bowler</b></label>
-    <input type="text" placeholder="Enter bowler name" name="bowler" list ="myUL3">
+  <div class="row">
+  <div class = "column">
+  <label for="email"><b>select batsman</b></label>
+    <input type="text" placeholder="Enter batsman name" name="batsman1" list="myUL3">  
+	  <input type="text" placeholder="Enter batsman name" name="batsman2" list="myUL3">
+	    <input type="text" placeholder="Enter batsman" name="batsman3" list="myUL3">
+		  <input type="text" placeholder="Enter batsman name" name="batsman4" list="myUL3">
+		    <input type="text" placeholder="Enter batsman name" name="batsman5" list="myUL3">
+			</div>
+			<div class="column">
+    <label for="email"><b>select bowler</b></label>
+     <input type="text" placeholder="Enter bowler name" name="bowler1" list="myUL3">
+	  <input type="text" placeholder="Enter bowler name" name="bowler2" list="myUL3">
+	    <input type="text" placeholder="Enter bowler name" name="bowler3" list="myUL3">
+		  <input type="text" placeholder="Enter bowler name" name="bowler4" list="myUL3">
+		    <input type="text" placeholder="Enter bowler name" name="bowler5" list="myUL3">
+			</div>
+	</div>		
 	
-	 <datalist id="myUL3" name="bowler" required>
+	 <datalist id="myUL3" name="batsman" required>
 				     <select required>
                     <option value = "DA Warner">David Warner</option value>
                     <option value = "S Dhawan">shikhar dhawan</option value>
@@ -744,56 +774,14 @@ body {
 					</select>
 					</datalist>
 					
-
-    <label for="psw"><b>venue</b></label>
-    <input type="text" placeholder="Enter venue name" name="venue"  list = "myUL2">
 	
-	
-	<datalist id="myUL2" name="venue" required>
-				     <select required>
-                    <option value = "Rajiv Gandhi International Stadium, Uppal">Rajiv Gandhi International Stadium, Uppal</option value>
-                    <option value = "Maharashtra Cricket Association Stadium">Maharashtra Cricket Association Stadium</option value>
-					<option value = "Saurashtra Cricket Association Stadium">Saurashtra Cricket Association Stadium</option value>
-                    <option value = "Holkar Cricket Stadium">Holkar Cricket Stadium</option value>
-					<option value = "M Chinnaswamy Stadium">M Chinnaswamy Stadium</option value>
-                    <option value = "Wankhede Stadium">Wankhede Stadium</option value>
-					<option value = "Eden Gardens">Eden Gardens</option value>
-                    <option value = "Feroz Shah Kotla">Feroz Shah Kotla</option value>
-					<option value = "Punjab Cricket Association IS Bindra Stadium, Mohali">Punjab Cricket Association IS Bindra Stadium, Mohali</option value>
-                    <option value = "Green Park">Green Park</option value>
-					<option value = "Sawai Mansingh Stadium">Sawai Mansingh Stadium</option value>
-					<option value = "MA Chidambaram Stadium, Chepauk">MA Chidambaram Stadium, Chepauk</option value>
-                    <option value = "Dr DY Patil Sports Academy">Dr DY Patil Sports Academy</option value>
-					<option value = "Newlands">Newlands</option value>
-					<option value = "St George's Park">St George's Park</option value>
-                    <option value = "Kingsmead">Kingsmead</option value>
-					<option value = "SuperSport Park">SuperSport Park</option value>
-                    <option value = "Buffalo Park">Buffalo Park</option value>
-					<option value = "New Wanderers Stadium">New Wanderers Stadium</option value>
-					<option value = "De Beers Diamond Oval">De Beers Diamond Oval</option value>
-                    <option value = "OUTsurance Oval">OUTsurance Oval</option value>
-					<option value = "Brabourne Stadium">Brabourne Stadium</option value>
-					<option value = "Sardar Patel Stadium, Motera">Sardar Patel Stadium, Motera</option value>
-                    <option value = "Barabati Stadium">Barabati Stadium</option value>
-					<option value = "Vidarbha Cricket Association Stadium, Jamtha">Vidarbha Cricket Association Stadium, Jamtha</option value>
-					<option value = "Himachal Pradesh Cricket Association Stadium">Himachal Pradesh Cricket Association Stadium</option value>
-                    <option value = "Nehru Stadium">Nehru Stadium</option value>
-					<option value = "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium">Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium</option value>
-					<option value = "Subrata Roy Sahara Stadium">Subrata Roy Sahara Stadium</option value>
-					<option value = "Shaheed Veer Narayan Singh International Stadium">Shaheed Veer Narayan Singh International Stadium</option value>
-                    <option value = "JSCA International Stadium Complex">JSCA International Stadium Complex</option value>
-					<option value = "Sheikh Zayed Stadium">Sheikh Zayed Stadium</option value>
-					<option value = "Sharjah Cricket Stadium">Sharjah Cricket Stadium</option value>
-                    <option value = "Dubai International Cricket Stadium">Dubai International Cricket Stadium</option value>
-					</select>
-					</datalist>
-
-    <button type="submit" class="btn" onclick="myFunction()">submit</button>
+   <button type="submit" class="btn" onclick="myFunction()">submit</button>
 	 <div id = "load" style="display:none;">	
-<button class="buttonload" id="load" >
-  <i class="fa fa-refresh fa-spin"></i>
-</button>
-</div>	
+   <button class="buttonload" id="load" >
+       <i class="fa fa-refresh fa-spin"></i>
+    </button>
+     </div>	
+	 
 	<script>
 function myFunction() {
   document.getElementById("load").style.display = "block";
@@ -802,33 +790,42 @@ function myFunction() {
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "204px";
-  document.getElementById("main").style.marginLeft = "0px";
+  
 }
 
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
+ 
 }
 
+
 </script>
-				  
 	
   </form>
-  <div class = "container3">
+
+
+<form>
+<div class="container5">
+<nav class="container5" id="mySidebar" class="sidebar">
+<a href="selection" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>batsman vs bowler</p>
+  </a>
+  <a href="batvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>batsman vs ground</p>
+  </a>
+  <a href="ballvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>bowler vs ground</p>
+  </a>
+  </nav>
+</div>
+<div class = "container3">
 <nav class="container3" id="mySidebar" class="sidebar">
-<a href="selection" class="w3-bar-item w3-button w3-padding-large w3-gray">
-    <p>SMART SELECTION</p>
+<a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <p>Manual Analysis</p>
   </a>
   </nav>
   </div>
- <form>
-<div class = "container2">
- 
- <button class="openbtn" onclick="openNav()">☰</button>
-
-</div> 
 
 </form>
-
 </body>
 </html>
