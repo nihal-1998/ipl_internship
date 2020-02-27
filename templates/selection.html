@@ -26,7 +26,7 @@
   position: absolute;
    max-width: 300px auto;
     margin: 10px;
-	right : 574px;
+	right : 492px;
   background-color: white;
  
 }
@@ -35,7 +35,7 @@
   position: absolute;
    max-width: 300px auto;
     margin: 10px;
-	right : 574px;
+	right : 492px;
   background-color: white;
   margin-top:60px;
  
@@ -118,7 +118,40 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
 #main {margin-left: 120px}
 
-@media only screen and (max-width: 600px) {main {margin-left: 0;}}
+@media only screen and (max-width: 600px) {main {margin-left: 0;}
+
+
+.container6 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 75px !important;
+	right: 311px !important;
+  background-color: white;
+ 
+}
+
+.container1 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 75px !important;
+	right: 0px !important;
+  background-color: white;
+ 
+}
+.container {
+  position: absolute;
+  height:535px;
+  right: 0;
+  margin: 20px;
+  max-width: 448px;
+  padding: 16px;
+  background-color: white;
+  margin-top:200px !important;
+}
+
+
+
+}
 
 
 /* Add styles to the form container */
@@ -145,8 +178,8 @@ position: absolute;
 .container6 {
   position: absolute;
    max-width: 300px auto;
-    margin: 175px;
-	right: 608px;
+    margin: 362px;
+	right: 113px;
   background-color: white;
  
 }
@@ -154,8 +187,8 @@ position: absolute;
 .container1 {
   position: absolute;
    max-width: 300px auto;
-    margin: 175px;
-	right: 297px;
+    margin: 35px;
+	right: 434px;
   background-color: white;
  
 }
@@ -181,8 +214,8 @@ input[type=text]:focus, input[type=password]:focus {
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  width: 100%;
-  margin-top:115px;
+  width: 91%;
+  margin-top:5px;
   opacity: 0.9;
 }
 
@@ -215,13 +248,15 @@ body {
 
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
   <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="batVsBall" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ABOUT</a>
-    <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">PHOTOS</a>
-    <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTACT</a>
-	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONT</a>
-	<a href="batVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTT</a>
-	<a href="ballVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">CONTTT</a>
+   <a href="selection" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>batsman vs bowler</p>
+  </a>
+  <a href="batvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>batsman vs ground</p>
+  </a>
+  <a href="ballvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>bowler vs ground</p>
+  </a>
   </div>
 </div>
 
@@ -784,7 +819,11 @@ body {
 					</select>
 					</datalist>
 					
-	
+	<br>
+	<br>
+		<br>
+	<br>
+	<br>
    <button type="submit" class="btn" onclick="myFunction()">submit</button>
 	 <div id = "load" style="display:none;">	
    <button class="buttonload" id="load" >
