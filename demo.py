@@ -587,7 +587,8 @@ def home_8():
 				
 			batman_ground = pd.DataFrame(batman,columns=['batsman','venue','score'])
 			abcd = batman_ground[batman_ground.batsman!='']
-			return render_template('batsmanvsground.html',tables=[abcd.to_html(classes='data')])
+			abcd1 = abcd.drop(columns='venue')
+			return render_template('batsmanvsground.html',tables=[abcd1.to_html(classes='data')],venue1=name2)
 
 @app.route('/ballvsground')
 def my_form_9():
@@ -643,7 +644,8 @@ def home_9():
 				bowlerlist = bowlerlist + [[i,name2,score]]
 			ballman_ground = pd.DataFrame(bowlerlist,columns=['bowler','venue','score'])
 			abcd = ballman_ground[ballman_ground.bowler!='']
-			return render_template('bowlervsground.html',tables=[abcd.to_html(classes='data')])
+			abcd1 = abcd.drop(columns='venue')
+			return render_template('bowlervsground.html',tables=[abcd1.to_html(classes='data')],venue1=name2)
 
 			
 if __name__=='__main__':
