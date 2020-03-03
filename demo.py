@@ -648,7 +648,110 @@ def home_9():
 			abcd1 = abcd.drop(columns='venue')
 			return render_template('bowlervsground.html',tables=[abcd1.to_html(classes='data')],venue1=name2)
 
+
+@app.route('/batindepth')
+def my_form_10():
+		return render_template('bat_indepth.html')
+		
+
+@app.route('/batindepth', methods=['POST'])
+def my_home_10():
+			i = request.form['batsman']
+			name2 = request.form['team']
+			batsman = list()
+			batsman2 = list()
+			if name2=='Royal Challengers Bangalore':
+				name2 = ['Mohammed Siraj','N Saini','UT Yadav','YS Chahal','CH Morris','DW Steyn','Washington Sundar','S Dube','P Negi']
+			elif name2=='Kolkata Knight Riders':
+				name2 = ['AD Russell','H Gurney','Kuldeep Yadav','LH Ferguson','P Krishna','SP Narine','PJ Cummins']
+			elif name2=='Kings XI Punjab':
+				name2== ['K Gowtham','H Viljoen','Mohammed Shami','M Ur Rahman','M Ashwin','Sheldon Cottrell']
+			elif name2=='Delhi Capitals':
+				name2 = ['A Mishra','AR Patel','HV Patel','I Sharma','K Rabada','K Paul','R Ashwin','S Lamichhane','MP Stoinis']
+			elif name2=='Sunrisers Hyderabad':
+				name2= ['B Kumar','B Stanlake','Mohammad Nabi','Rashid Khan','Sandeep Sharma','S Nadeem','S Kaul','K Ahmed','Basil Thampi']
+			elif name2=='Mumbai Indians':
+				name2=['DS Kulkarni','HH Pandya','JJ Bumrah','KA Pollard','SL Malinga','MJ McClenaghan','RD Chahar','NM Coulter-Nile','KH Pandya']
+			elif name2=='Rajasthan Royals':	
+				name2= ['BA Stokes','J Archer','M Markande','S Gopal','VR Aaron','T Curran','AJ Tye']
+			elif name2=='Chennai Super Kings':	
+				name2= ['DL Chahar','Harbhajan Singh','Imran Tahir','B Stanlake','RA Jadeja','PP Chawla']
 			
+			 
+			batsman_data_2 = delivery_data[(delivery_data.batsman==i)]
+			hardhitting2 = ((4*len(batsman_data_2[batsman_data_2.batsman_runs==4]))+(6*len(batsman_data_2[batsman_data_2.batsman_runs==6])))/len(batsman_data_2[(batsman_data_2.noball_runs==0)&(batsman_data_2.wide_runs==0)])
+			finisher2 = ((len(batsman_data_2.match_id.unique())-len(delivery_data[delivery_data.player_dismissed==i])))/len(batsman_data_2.match_id.unique())
+			fastscore2 = batsman_data_2.batsman_runs.sum()/len(batsman_data_2[(batsman_data_2.noball_runs==0)&(batsman_data_2.wide_runs==0)])
+			average2 = batsman_data_2.batsman_runs.sum()/len(delivery_data[delivery_data.player_dismissed==i])
+			runningBW2 = ((batsman_data_2.batsman_runs.sum())-((4*len(batsman_data_2[batsman_data_2.batsman_runs==4]))+(6*len(batsman_data_2[batsman_data_2.batsman_runs==6]))))/len(batsman_data_2[(batsman_data_2.batsman_runs!=4)&(batsman_data_2.batsman_runs!=6)&(batsman_data_2.noball_runs==0)&(batsman_data_2.wide_runs==0)])
+			batsman2 = batsman2 + [[i,hardhitting2,finisher2,fastscore2,average2,runningBW2]]
+			for y in name2:
+
+				batsman_data_1 = delivery_data[(delivery_data.batsman==i)&(delivery_data.bowler==y)]
+				if len(batsman_data_1)>0:
+					out = len(batsman_data_1[(batsman_data_1.player_dismissed==i)&(batsman_data_1.dismissal_kind!='run out')])
+					hardhitting = ((4*len(batsman_data_1[batsman_data_1.batsman_runs==4]))+(6*len(batsman_data_1[batsman_data_1.batsman_runs==6])))/len(batsman_data_1[(batsman_data_1.noball_runs==0)&(batsman_data_1.wide_runs==0)])
+					# finisher = ((len(batsman_data_1.match_id.unique())-len(batsman_data_1[batsman_data_1.player_dismissed==i])))/len(batsman_data_1.match_id.unique())
+					# fastscore = batsman_data_1.batsman_runs.sum()/len(batsman_data_1[(batsman_data_1.noball_runs==0)&(batsman_data_1.wide_runs==0)])
+					# average = batsman_data_1.batsman_runs.sum()/len(batsman_data_1[batsman_data_1.player_dismissed==i])
+					runningBW = ((batsman_data_1.batsman_runs.sum())-((4*len(batsman_data_1[batsman_data_1.batsman_runs==4]))+(6*len(batsman_data_1[batsman_data_1.batsman_runs==6]))))/len(batsman_data_1[(batsman_data_1.batsman_runs!=4)&(batsman_data_1.batsman_runs!=6)&(batsman_data_1.noball_runs==0)&(batsman_data_1.wide_runs==0)])
+					batsman = batsman + [[i,y,hardhitting,runningBW,out]]
+				else:
+					hardhitting = 0 
+					runningBW = 0
+					out = 0 
+					batsman = batsman + [[i,y,hardhitting,runningBW,out]]
+					
+				
+			dsds=pd.DataFrame(data=batsman,columns=['batsman','bowler','hardhitting','running BTW Wicket','out'])    
+			ds=pd.DataFrame(data=batsman2,columns=['batsman','hardhitting','finisher','fastscore','average','running BTW Wicket'])
+			abcd1 = dsds.drop(columns='batsman')
+			return render_template('bat_indepth.html',tables=[ds.to_html(classes='data')],tables2=[abcd1.to_html(classes='data')],p=i,k='ALL IPL PERFORMANCE')
+    
+			
+@app.route('/ballindepth')
+def my_form_11():
+		return render_template('ball_indepth.html')
+		
+
+@app.route('/ballindepth', methods=['POST'])
+def my_home_11():
+			bowler_final = list()
+			a = request.form['bowler']
+			bowler = list()
+			bowler_data = delivery_data[delivery_data.bowler==a]
+			t=bowler_data.total_runs.sum()
+			balls=len(bowler_data[(bowler_data.wide_runs==0)&(bowler_data.noball_runs==0)])
+			innings = len(bowler_data.match_id.unique())
+			economy = t/(balls/6)
+			out = len(bowler_data[(bowler_data.dismissal_kind!='')&(bowler_data.dismissal_kind!='run out')])
+			print(t,out)
+			if out!=0:
+				wicket_takers = balls/out
+				wicket_takers_final = 1/wicket_takers
+				average = t/out
+			else:
+				wicket_takers_final = '--'
+				average = '--'
+			for i in bowler_data.match_id.unique():
+				out = len(bowler_data[(bowler_data.dismissal_kind!='')&(bowler_data.dismissal_kind!='run out')&(bowler_data.match_id==i)])
+				bowler = bowler + [[i,out]]
+			bowler_ = pd.DataFrame(data=bowler,columns=['match_id','wickets'])
+			wick3 = len(bowler_[bowler_.wickets>=3])
+			if innings!=0:
+				big_wick = wick3/innings
+				short_perfo = ((bowler_.wickets.sum())-(3*wick3))/(innings-wick3)
+				short_perfo_final = 1/short_perfo
+			else:
+				big_wick = '--'
+				short_perfo_final = '--'
+			bowler_final = bowler_final + [[economy,wicket_takers_final,average,big_wick,short_perfo_final]]
+			bowler_final_ = pd.DataFrame(data=bowler_final,columns=['economy','wicket_takers','average','big_wicket_taker','short_performance'])
+			return render_template('ball_indepth.html',tables=[bowler_final_.to_html(classes='data')],k = a)
+		
+		
+		
+		
 if __name__=='__main__':
      # http = WSGIServer(('', 9000), app.wsgi_app) 
      # http.serve_forever()
