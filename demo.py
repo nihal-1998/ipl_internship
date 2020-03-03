@@ -11,7 +11,6 @@ from gevent import monkey
 #from sklearn import linear_model
 #from subprocess import check_output
 
-
 #monkey.patch_all()
 
 app = Flask(__name__)
