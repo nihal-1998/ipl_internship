@@ -28,7 +28,7 @@
   position: absolute;
    max-width: 300px auto;
     margin: 10px;
-	right : 575px;
+	right : 442px;
   background-color: white;
   margin-top:0px;
  
@@ -38,8 +38,8 @@
   position: absolute;
    max-width: 300px auto;
     margin: 362px;
-	right: 113px;
-	margin-top: 236px;
+	right: -42px;
+	margin-top: 168px;
   background-color: white;
  
 }
@@ -102,14 +102,14 @@ table, th {
   padding: 12px;
   background-color: #4CAF50;
   color:white;
-  font-size: 17px;
+  font-size: 13px;
 }
 
 td{
 background-color: #f1f1f1;
 color: black;
 padding:12px;
-font-size: 20px;
+font-size: 16px;
 
 
 
@@ -203,7 +203,7 @@ right : -150px !important;
   position: absolute;
    max-width: 300px auto;
     margin: 175px;
-	right : 170px;
+	right : 144px;
 	margin-top: 43px;
   background-color: white;
  
@@ -256,7 +256,7 @@ body {
  <form  class =  "container1" style = "background-color:#f1f1f1"  method = "POST" align = "center">
  	 			  <h3 align="center">	 {{ batsman }}  {{ vss }} {{ team1 }} </h3> 
 {% for table in tables %}
-            {{k}}
+           {{p}} {{k}}
             {{ table|safe }}
 {% endfor %}
  </form>
@@ -855,21 +855,21 @@ function closeNav() {
 
 <form>
 <div class="container5">
-<nav class="container5" id="mySidebar" class="sidebar">
+<nav class="container5" id="mySidebar" class="sidebar" align="right">
 <a href="selection" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>BatsmanVsBall</p>
+    <p>BatVsBall</p>
   </a>
   <a href="batvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>Bat Vs grounds</p>
+    <p>BatVsVenue</p>
   </a>
   <a href="ballvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>ball vs ground</p>
+    <p>BallVsVenue</p>
   </a>
   <a href="batindepth" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>BatsmanInDepth</p>
+    <p>BatInDepth</p>
   </a>
    <a href="ballindepth" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-   <p>Bowler In Depth</p>
+   <p>BallInDepth</p>
   </a>
   <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
     <p>ManualAnalysis</p>

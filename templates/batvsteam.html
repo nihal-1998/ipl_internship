@@ -81,14 +81,14 @@ table, th {
   padding: 12px;
   background-color: #4CAF50;
   color:white;
-  font-size: 17px;
+  font-size: 13px;
 }
 
 td{
 background-color: #f1f1f1;
 color: black;
 padding:12px;
-font-size: 20px;
+font-size: 16px;
 
 
 
@@ -170,7 +170,7 @@ right : -150px !important;
 /* Add styles to the form container */
 .container {
   position: absolute;
-  right: 0;
+  right: -20px;
   margin: 20px;
   max-width: 300px;
   padding: 16px;
@@ -182,7 +182,7 @@ right : -150px !important;
   position: absolute;
    max-width: 300px auto;
     margin: 175px;
-	right : 170px;
+	right : 125px;
   background-color: white;
  
 }
@@ -232,7 +232,7 @@ body {
   
   <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:62%"/>
   <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <p>HOME</p>
+    <p>ManualAnalysis</p>
   </a>
   <a href="batVsBall" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p style="color:white">BATSMAN VS BOWLER</p>
@@ -253,13 +253,16 @@ body {
   <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p style="color:white">Ball vs team</p>
   </a>
+  <a href="selection" class="w3-bar-item w3-button w3-padding-large w3-gray">
+    <p>SMART SELECTION</p>
+  </a>
     <button class="openbtn" onclick="closeNav()"> X </button>
 </nav>
 
 
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
   <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-     <a href="home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+     <a href="home" class="w3-bar-item w3-button" style="width:25% !important">ManualAnalysis</a>
     <a href="batVsBall" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">batVsball</a>
     <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">batVsvenue</a>
     <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ballVsvenue</a>
