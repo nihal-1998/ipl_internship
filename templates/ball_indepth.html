@@ -23,6 +23,25 @@
 <style>
 
 
+.container5 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 10px;
+	right : 575px;
+  background-color: white;
+  margin-top:0px;
+ 
+}
+
+.container6 {
+  position: absolute;
+   max-width: 300px auto;
+    margin: 362px;
+	right: 113px;
+  background-color: white;
+ 
+}
+
 .container3 {
   position: absolute;
    max-width: 300px auto;
@@ -78,9 +97,9 @@
 table, th {
   border: 1px solid grey;
   border-collapse: collapse;
+  padding: 12px;
   background-color: #4CAF50;
   color:white;
-  padding: 12px;
   font-size: 17px;
 }
 
@@ -128,6 +147,8 @@ margin-top:150px !important;
 }
 
 
+
+
 table, th {
   border: 1px solid grey;
   border-collapse: collapse;
@@ -160,8 +181,6 @@ margin : 220px !important;
 right : -150px !important;
 
 }
-
-
 
 
 }
@@ -228,61 +247,21 @@ body {
 <body>
 
 
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" id="mySidebar" class="sidebar">
-  
-  <img src="{{ url_for ('static', filename = 'img/batsman-and-bowler.jpg') }}" style="width:62%"/>
-  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <p>HOME</p>
-  </a>
-  <a href="batVsBall" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">BATSMAN VS BOWLER</p>
-  </a>
-  <a href="batVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">BATSMAN VS VENUE</p>
-  </a>
-  <a href="ballVsVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">BOWLER VS VENUE</p>
-	</a>
-  <a href="batVsBallInvVenue" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">Bat vs ball in venue</p>
-  </a>
-  <a href="batVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">Bat vs team</p>
-  </a>
-  
-  
-  <a href="ballVsteam" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p style="color:white">Ball vs team</p>
-  </a>
-  <button class="openbtn" onclick="closeNav()"> X </button>
-</nav>
 
 
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-   <a href="home" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="batVsBall" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">batVsball</a>
-    <a href="batVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">batVsvenue</a>
-    <a href="ballVsVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ballVsvenue</a>
-	<a href="batVsBallInvVenue" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">batballvenue</a>
-	<a href="batVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">batVsteam</a>
-	<a href="ballVsteam" class="w3-bar-item w3-button" style="width:25% !important" method = "POST">ballVsteam</a>
-  </div>
-</div>
-
-
- <form  class =  "container1" style = "background-color:#f1f1f1" method = "POST" align = "right">
- 	 			  <h3 align="center">	 {{ bowler }}   {{vs}}  {{ team1 }} </h3> 
+ <form  class =  "container1" style = "background-color:#f1f1f1"  method = "POST" align = "center">
+ 	 			  <h3 align="center">	 {{ batsman }}  {{ vss }} {{ team1 }} </h3> 
 {% for table in tables %}
-          
+             {{k}}
             {{ table|safe }}
 {% endfor %}
  </form>
 
-<h2 style="color:white" align = "center">IPL BOWLER VS TEAM ANALYSIS</h2>
+ 
+<h2 style="color:white" align = "center">IPL Bowler indepth analysis</h2>
 
   <form  class="container" method = "POST" align = "center">
-    <h1>Bowler Vs team</h1>
+    <h1>Bowler Analysis</h1>
 
     <label for="email"><b>bowler</b></label>
     <input type="text" placeholder="Enter bowler name" name="bowler" list="myUL3">
@@ -808,39 +787,13 @@ body {
 					</select>
 					</datalist>
 					
-	
-
-    <label for="psw"><b>team</b></label>
-    <input type="text" placeholder="Enter team name" name="team" list="myUL2">
     
-	
-	<datalist id="myUL2" name="venue" required>
-				     <select required>
-                    <option value = "Royal Challengers Bangalore">Royal Challengers Bangalore</option value>
-                    <option value = "Rising Pune Supergiant">Rising Pune Supergiant</option value>
-					<option value = "Kolkata Knight Riders">Kolkata Knight Riders</option value>
-                    <option value = "Kings XI Punjab">Kings XI Punjab</option value>
-					<option value = "Delhi Daredevils">Delhi Daredevils</option value>
-                    <option value = "Sunrisers Hyderabad">Sunrisers Hyderabad</option value>
-					<option value = "Mumbai Indians">Mumbai Indians</option value>
-                    <option value = "Gujarat Lions">Gujarat Lions</option value>
-					<option value = "Rajasthan Royals">Rajasthan Royals</option value>
-                    <option value = "Chennai Super Kings">Chennai Super Kings</option value>
-					<option value = "Deccan Chargers">Deccan Chargers</option value>
-					<option value = "Pune Warriors">Pune Warriors</option value>
-                    <option value = "Kochi Tuskers Kerala">Kochi Tuskers Kerala</option value>
-					<option value = "Rising Pune Supergiants">Rising Pune Supergiants</option value>
-					<option value = "Delhi Capitals">Delhi Capitals</option value>
-                    
-					<select>
-					</datalist>
-	
-   <button type="submit" class="btn" onclick="myFunction()">submit</button>
+    <button type="submit" class="btn" onclick="myFunction()">submit</button>
 	 <div id = "load" style="display:none;">	
-   <button class="buttonload" id="load" >
-       <i class="fa fa-refresh fa-spin"></i>
+    <button class="buttonload" id="load" >
+     <i class="fa fa-refresh fa-spin"></i>
     </button>
-     </div>	
+      </div>	
 	<script>
 function myFunction() {
   document.getElementById("load").style.display = "block";
@@ -849,32 +802,44 @@ function myFunction() {
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "204px";
-  
+  document.getElementById("main").style.marginLeft = "0px";
 }
 
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
- 
+  document.getElementById("main").style.marginLeft= "0";
 }
-
 
 </script>
 	
   </form>
 
-<div class = "container3">
-<nav class="container3" id="mySidebar" class="sidebar">
-<a href="selection" class="w3-bar-item w3-button w3-padding-large w3-gray">
-    <p>SMART SELECTION</p>
+
+
+<form>
+<div class="container5">
+<nav class="container5" id="mySidebar" class="sidebar">
+<a href="selection" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>BatsmanVsBall</p>
+  </a>
+  <a href="batvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>Bat Vs grounds</p>
+  </a>
+  <a href="ballvsground" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>ball vs ground</p>
+  </a>
+  <a href="batindepth" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>BatsmanInDepth</p>
+  </a>
+   <a href="ballindepth" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+   <p>Bowler In Depth</p>
+  </a>
+  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <p>ManualAnalysis</p>
   </a>
   </nav>
-  </div>
-<form>
-<div class = "container2">
- 
- <button class="openbtn" onclick="openNav()">☰</button>
-
-</div> 
-</form>
+</div>  
+  
+  
 </body>
 </html>
