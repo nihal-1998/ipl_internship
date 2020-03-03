@@ -706,7 +706,8 @@ def my_home_10():
 			dsds=pd.DataFrame(data=batsman,columns=['batsman','bowler','hardhitting','running BTW Wicket','out'])    
 			ds=pd.DataFrame(data=batsman2,columns=['batsman','hardhitting','finisher','fastscore','average','running BTW Wicket'])
 			abcd1 = dsds.drop(columns='batsman')
-			return render_template('bat_indepth.html',tables=[ds.to_html(classes='data')],tables2=[abcd1.to_html(classes='data')],p=i,k='ALL IPL PERFORMANCE')
+			abcd2 = ds.drop(columns='batsman')
+			return render_template('bat_indepth.html',tables=[abcd2.to_html(classes='data')],tables2=[abcd1.to_html(classes='data')],p=i,k='ALL IPL PERFORMANCE')
     
 			
 @app.route('/ballindepth')
