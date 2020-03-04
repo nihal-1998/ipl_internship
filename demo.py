@@ -802,8 +802,9 @@ def my_home_11():
 				short_perfo_final = 1/short_perfo
 			else:
 				big_wick = '--'
+				short_perfo = '--'
 				short_perfo_final = '--'
-			bowler_final = bowler_final + [[economy,wicket_takers_final,average,big_wick,short_perfo_final]]
+			bowler_final = bowler_final + [[economy,wicket_takers_final,average,big_wick,short_perfo]]
 			bowler_final_ = pd.DataFrame(data=bowler_final,columns=['economy','wicket_takers','average','big_wicket_taker','short_performance'])
 			return render_template('ball_indepth.html',tables=[bowler_final_.to_html(classes='data')],k = a)
 		
