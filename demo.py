@@ -205,7 +205,7 @@ def home_1():
 								t=batsman_data[batsman_data.match_id==match].batsman_runs.sum()
 								runs=runs+t
 	#           				print(runs)
-								out = out+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.player_dismissed==name)])
+								out = out+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.player_dismissed==name)&(batsman_data.is_super_over==0)])
 								balls=balls+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
 								batting_first=batting_first+[[venue,1,balls,t,out]]
 				batvs_venue = pd.DataFrame(batting_first,columns=['venue','batting first','balls','runs','out'])
@@ -591,7 +591,7 @@ def home_8():
 								t=batsman_data[batsman_data.match_id==match].batsman_runs.sum()
 								runs=runs+t
 					#           				print(runs)
-								out = out+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.player_dismissed==i)])
+								out = out+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.player_dismissed==i)&(batsman_data.is_super_over==0)])
 								balls=balls+len(batsman_data[(batsman_data.match_id==match)&(batsman_data.wide_runs==0)&(batsman_data.noball_runs==0)])
 								batting_first=batting_first+[[venue,1,balls,t,out]]
 					batvs_venue = pd.DataFrame(batting_first,columns=['venue','batting first','balls','runs','out'])
@@ -718,9 +718,9 @@ def my_home_10():
 			elif name2=='Mumbai Indians':
 				name2=['DS Kulkarni','HH Pandya','JJ Bumrah','KA Pollard','SL Malinga','MJ McClenaghan','RD Chahar','NM Coulter-Nile','KH Pandya']
 			elif name2=='Rajasthan Royals':	
-				name2= ['BA Stokes','J Archer','M Markande','S Gopal','VR Aaron','T Curran','AJ Tye']
+				name2= ['BA Stokes','J Archer','M Markande','S Gopal','VR Aaron','T Curran','AJ Tye','AS Rajpoot','JD Unadkat']
 			elif name2=='Chennai Super Kings':	
-				name2= ['DL Chahar','Harbhajan Singh','Imran Tahir','B Stanlake','RA Jadeja','PP Chawla']
+				name2= ['DL Chahar','Harbhajan Singh','Imran Tahir','M Santner','RA Jadeja','PP Chawla','SN Thakur']
 			
 			batsman_data_2 = delivery_data[(delivery_data.batsman==i)]
 			if len(batsman_data_2)>0: 
