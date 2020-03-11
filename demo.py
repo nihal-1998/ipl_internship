@@ -710,7 +710,7 @@ def my_home_10():
 			elif name2=='Kolkata Knight Riders':
 				name2 = ['AD Russell','H Gurney','Kuldeep Yadav','LH Ferguson','P Krishna','SP Narine','PJ Cummins']
 			elif name2=='Kings XI Punjab':
-				name2== ['K Gowtham','H Viljoen','Mohammed Shami','M Ur Rahman','M Ashwin','Sheldon Cottrell']
+				name2 = ['K Gowtham','H Viljoen','Mohammed Shami','M Ur Rahman','M Ashwin','Sheldon Cottrell']
 			elif name2=='Delhi Capitals':
 				name2 = ['A Mishra','AR Patel','HV Patel','I Sharma','K Rabada','K Paul','R Ashwin','S Lamichhane','MP Stoinis']
 			elif name2=='Sunrisers Hyderabad':
