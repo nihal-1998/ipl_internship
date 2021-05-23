@@ -707,21 +707,21 @@ def my_home_10():
 			batsman = list()
 			batsman2 = list()
 			if name2=='Royal Challengers Bangalore':
-				name2 = ['Mohammed Siraj','N Saini','UT Yadav','YS Chahal','CH Morris','DW Steyn','Washington Sundar','S Dube','P Negi']
+				name2 = ['Mohammed Siraj','N Saini','A Zampa','YS Chahal','KW Richardson','Shahbaz Ahmed','Washington Sundar','HV Patel','DT Christian']
 			elif name2=='Kolkata Knight Riders':
-				name2 = ['AD Russell','H Gurney','Kuldeep Yadav','LH Ferguson','P Krishna','SP Narine','PJ Cummins']
+				name2 = ['AD Russell','N Rana','Kuldeep Yadav','LH Ferguson','P Krishna','SP Narine','PJ Cummins','Shivam Mavi','KL Nagarkoti','V Chakravarthy','Shakib Al Hasan','Harbhajan Singh','BCJ Cutting']
 			elif name2=='Kings XI Punjab':
-				name2 = ['K Gowtham','H Viljoen','Mohammed Shami','M Ur Rahman','M Ashwin','Sheldon Cottrell']
+				name2 = ['CJ Jordan','R Bishnoi','Mohammed Shami','H Brar','M Ashwin','Arshdeep Singh','MC Henriques']
 			elif name2=='Delhi Capitals':
-				name2 = ['A Mishra','AR Patel','HV Patel','I Sharma','K Rabada','K Paul','R Ashwin','S Lamichhane','MP Stoinis']
+				name2 = ['A Mishra','AR Patel','Avesh Khan','I Sharma','K Rabada','T Curran','R Ashwin','CR Woakes','MP Stoinis','UT Yadav','Anrich Nortje']
 			elif name2=='Sunrisers Hyderabad':
-				name2= ['B Kumar','B Stanlake','Mohammad Nabi','Rashid Khan','Sandeep Sharma','S Nadeem','S Kaul','K Ahmed','Basil Thampi']
+				name2= ['B Kumar','Abhishek Sharma','Mohammad Nabi','Rashid Khan','Sandeep Sharma','S Nadeem','S Kaul','K Ahmed','Basil Thampi','JO Holder','T Natarajan','V Shankar','Mujeeb Ur Rahman']
 			elif name2=='Mumbai Indians':
-				name2=['DS Kulkarni','HH Pandya','JJ Bumrah','KA Pollard','SL Malinga','MJ McClenaghan','RD Chahar','NM Coulter-Nile','KH Pandya']
+				name2=['DS Kulkarni','HH Pandya','JJ Bumrah','KA Pollard','A Roy','J Yadav','RD Chahar','NM Coulter-Nile','KH Pandya','TA Boult','AF Milne','PP Chawla','JDS Neesham']
 			elif name2=='Rajasthan Royals':	
-				name2= ['BA Stokes','J Archer','M Markande','S Gopal','VR Aaron','T Curran','AJ Tye','AS Rajpoot','JD Unadkat']
+				name2= ['BA Stokes','J Archer','M Markande','S Gopal','Kartik Tyagi','M Lomror','AJ Tye','R Tewatia','JD Unadkat','R Parag','S Dube','CH Morris','Mustafizur Rahman']
 			elif name2=='Chennai Super Kings':	
-				name2= ['DL Chahar','Harbhajan Singh','Imran Tahir','M Santner','RA Jadeja','PP Chawla','SN Thakur']
+				name2= ['DL Chahar','S Curran','Imran Tahir','M Santner','RA Jadeja','DJ Bravo','SN Thakur','KV Sharma','L Ngidi','Hazlewood','M Ali','K Gowtham']
 			
 			batsman_data_2 = delivery_data[(delivery_data.batsman==i)]
 			if len(batsman_data_2)>0: 
