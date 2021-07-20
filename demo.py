@@ -59,7 +59,7 @@ ddl_VenueMaster = pd.read_csv("ddlVenueMasterData.csv")
 
 @app.route('/')
 def website_home():
-		print(ddl_PlayerMaster.value.tolist())
+		#print(ddl_PlayerMaster.value.tolist())
 		return render_template('iplplayerHome.html',playerMastervelue=ddl_PlayerMaster.value.tolist(),playerMasterName=ddl_PlayerMaster.name.tolist(),teamMaster=ddl_TeamMaster.value.tolist(),venueMaster=ddl_VenueMaster.value.tolist())
 
 #@app.route('/batVsBall')
