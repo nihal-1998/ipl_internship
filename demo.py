@@ -68,7 +68,7 @@ def website_home():
 #		return render_template('imagebat.html')
 
 
-@app.route('/batVsBall', methods=['POST'])		
+@app.route('/batVsBall', methods=['GET','POST'])		
 def home():
 				req = request.get_json()
 				#print(req)
