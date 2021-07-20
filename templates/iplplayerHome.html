@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script src="https://kit.fontawesome.com/7e616dc78b.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Mukta+Malar:400,500,600" rel="stylesheet" />
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+
+ 
+ <script>
+var tabs = $('.tabs');
+var selector = $('.tabs').find('a').length;
+//var selector = $(".tabs").find(".selector");
+var activeItem = tabs.find('.active');
+var activeWidth = activeItem.innerWidth();
+$(".selector").css({
+  "left": activeItem.position.left + "px", 
+  "width": activeWidth + "px"
+});
+
+$(".tabs").on("click","a",function(e){
+  e.preventDefault();
+  $('.tabs a').removeClass("active");
+  $(this).addClass('active');
+  var activeWidth = $(this).innerWidth();
+  var itemPos = $(this).position();
+  $(".selector").css({
+    "left":itemPos.left + "px", 
+    "width": activeWidth + "px"
+  });
+});
+
+</script>
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Roboto');
+#leagueSelect{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2{
+  margin:0px;
+  text-transform: uppercase;
+}
+
+h6{
+  margin:0px;
+  color:#777;
+}
+
+.wrapper{
+  text-align:center;
+  margin:50px auto;
+}
+
+.tabs{
+  margin-top:50px;
+  font-size:15px;
+  padding:0px;
+  list-style:none;
+  background:#fff;
+  box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+  display:inline-block;
+  border-radius:50px;
+  position:relative;
+}
+
+.tabs a{
+  text-decoration:none;
+  color: #777;
+  text-transform:uppercase;
+  padding:10px 20px;
+  display:inline-block;
+  position:relative;
+  z-index:1;
+  transition-duration:0.6s;
+}
+
+.tabs a.active{
+  color:#fff;
+}
+
+.tabs a i{
+  margin-right:5px;
+}
+
+.tabs .selector{
+  height:100%;
+  display:inline-block;
+  position:absolute;
+  left:0px;
+  top:0px;
+  z-index:1;
+  border-radius:50px;
+  transition-duration:0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  background: #05abe0;
+  background: -moz-linear-gradient(45deg, #05abe0 0%, #8200f4 100%);
+  background: -webkit-linear-gradient(45deg, #05abe0 0%,#8200f4 100%);
+  background: linear-gradient(45deg, #05abe0 0%,#8200f4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='#8200f4',GradientType=1 );
+}
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 55px;
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  opacity: 1;
+}
+
+img {
+  opacity: 0.5;
+}
+
+img:focus {
+  opacity: 1;
+}
+
+#sitelink {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Roboto Mono", monospace;
+}
+
+
+/* End of Page styling */
+
+
+/* Fill button styling */
+.fill {
+	 margin: 15px;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 1px 20px 6px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.fill::after {
+  content: "";
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.fill:hover::after {
+  top: 0px;
+  left: 0px;
+}
+/* End of Fill Button  */
+
+.simple {
+	 margin: 8px;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 1px 20px 6px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.simple::after {
+  content: "";
+  background-color: #dcbaff;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+   transition: 0.2s;
+}
+.simple:hover::after {
+  top: 0px;
+  left: 0px;
+}
+
+:root {
+
+    --input-color: #99A3BA;
+    --input-border: #CDD9ED;
+    --input-background: #fff;
+    --input-placeholder: #CBD1DC;
+
+    --input-border-focus: #275EFE;
+
+    --group-color: var(--input-color);
+    --group-border: var(--input-border);
+    --group-background: #EEF4FF;
+
+    --group-color-focus: #fff;
+    --group-border-focus: var(--input-border-focus);
+    --group-background-focus: #678EFE;
+
+}
+
+.form-field {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    color: var(--input-color);
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+    transition: border .3s ease;
+ 
+}
+placeholder{
+        color: var(--input-placeholder);
+    }
+.form-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+    .form-field {
+        position: relative;
+        z-index: 1;
+        flex: 1 1 auto;
+        width: 1%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    span {
+    	width: 75px !important;
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 25px;
+        color: var(--group-color);
+        background: var(--group-background);
+        border: 1px solid var(--group-border);
+        transition: background .3s ease, border .3s ease, color .3s ease;
+    }
+    span:hover::after {
+        
+            color: var(--group-color-focus);
+            background: var(--group-background-focus);
+            border-color: var(--group-border-focus);
+        }
+    
+
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: inherit;
+    &:before,
+ 
+}
+
+// Center
+#divBatBall {
+    min-height: 100vh;
+    font-family: 'Mukta Malar', Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #F5F9FF;  
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+/* 1 */
+.btn-1 {
+  transition: all 0.3s ease;
+}
+
+.span-header{
+        width: 100% !important;
+        cursor: pointer;
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 25px;
+        color: var(--group-color-focus);
+        background: var(--group-background-focus);
+        border: 1px solid var(--group-border-focus);
+        transition: background .3s ease, border .3s ease, color .3s ease;
+}
+
+#batvsballResponseTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#batvsballResponseTable td, #batvsballResponseTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#batvsballResponseTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#batvsballResponseTable tr:hover {background-color: #ddd;}
+
+#batvsballResponseTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #666699;
+  color: white;
+}
+
+.batvsballSmartResponseTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.batvsballSmartResponseTable td, .batvsballSmartResponseTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.batvsballSmartResponseTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.batvsballSmartResponseTable tr:hover {background-color: #ddd;}
+
+.batvsballSmartResponseTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #666699;
+  color: white;
+}
+
+ div.container {  
+           display: flex;  
+           justify-content: center;  
+           align-items: center;  
+      }  
+
+
+.show-div {
+  display: block;
+}
+.hide-div {
+  display: none;
+}
+/*
+body > *:not(.loadingGIF) {
+  filter: blur(3px);
+}*/
+
+</style>
+<script>
+function selectDataset(datasetType)
+{
+   document.getElementById("selectedLeaguage").innerHTML = datasetType;
+   document.getElementById("selectedLeaguage").value = datasetType;
+}
+
+function showMydiv(id)
+{
+   $('.ActionDiv').addClass('hide-div');
+   $('#'+id).removeClass('hide-div');
+}
+
+function BatvsVenueClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+randomGIF();
+$('#BatvsVenueResponse').addClass('hide-div');
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+   // $('.loadingGIF').css('filter', 'blur(0px)');
+   $('.loadingGIF').css('display', "block");
+
+//var leaguage = document.getElementById("selectedLeaguage").value;
+var batsman = document.getElementById("batsmanBatvsVenue").value;
+var venue = document.getElementById("venueBatvsVenue").value;
+var entry = {
+            leaguageName: leaguage,
+            batsmanName: batsman,
+            venueName: venue
+        };
+
+fetch("/batVsVenue", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+   
+          $('.loadingGIF').css('display', "none");
+          $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("batvsVenuecenturies").innerHTML = data.centuries;
+          document.getElementById("batvsVenueHcenturies").innerHTML = data.halfCen;
+          document.getElementById("batvsVenueTotalRuns").innerHTML = data.totalrun;
+          document.getElementById("batvsVenueInnings").innerHTML = data.innings;
+          document.getElementById("batvsVenueOuts").innerHTML = data.outs;
+          
+          var strikRate = data.strikerate;
+          var Avg = data.average;
+          document.getElementById("batvsVenueAverage").innerHTML = String(Avg).substr(0, 6);
+          document.getElementById("batvsVenueSR").innerHTML = String(strikRate).substr(0, 6);
+          $('#BatvsVenueResponse').removeClass('hide-div');
+
+        
+          console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("batvsVenuecenturies").innerHTML = '--';
+          document.getElementById("batvsVenueHcenturies").innerHTML = '--';
+          document.getElementById("batvsVenueTotalRuns").innerHTML ='--';
+          document.getElementById("batvsVenueInnings").innerHTML = '--';
+          document.getElementById("batvsVenueOuts").innerHTML = '--';
+          document.getElementById("batvsVenueAverage").innerHTML = '--';
+          document.getElementById("batvsVenueSR").innerHTML = '--';
+          $('#BatvsVenueResponse').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+
+function BatvsBallClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+randomGIF();
+$('#batvsballResponse').addClass('hide-div');
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $('.loadingGIF').css('display', "block");
+
+var batsman = document.getElementById("batsmanBatvsBall").value;
+var bowler = document.getElementById("bowlerBatvsBall").value;
+var entry = {
+            leaguageName: leaguage,
+            batsmanName: batsman,
+            bowlerName: bowler
+        };
+
+fetch("/batVsBall", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+
+          $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          $('.loadingGIF').css('display', "none");
+          document.getElementById("batvsballRuns").innerHTML = data.runs;
+          document.getElementById("batvsballBalls").innerHTML = data.balls;
+          document.getElementById("batvsballOuts").innerHTML = data.out;
+
+           var strikRate = data.strikeRate;
+       
+          document.getElementById("batvsballSR").innerHTML = String(strikRate).substr(0, 6);
+           $('#batvsballResponse').removeClass('hide-div');
+
+
+          console.log(data);
+        });
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+function BallvsVenueClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+randomGIF();
+
+$('#BallvsVenueResponse').addClass('hide-div');
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+var bowler = document.getElementById("bowlerBallvsVenue").value;
+var venue = document.getElementById("venueBallvsVenue").value;
+var entry = {
+            leaguageName: leaguage,
+            bowlerName: bowler,
+            venue: venue
+        };
+
+fetch("/ballVsVenue", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+
+  $('.loadingGIF').css('display', "none");
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("ballvsVenueInnings").innerHTML = data.numberOfinnings;
+          document.getElementById("ballvsVenueRuns").innerHTML = data.totalruns;
+          document.getElementById("ballvsVenueWickets").innerHTML = data.totalwickets;
+
+           var average = data.average;
+           var economy = data.economy;
+       
+          document.getElementById("ballvsVenueAverage").innerHTML = String(average).substr(0, 6);
+          document.getElementById("ballvsVenueEconomy").innerHTML = String(economy).substr(0, 6);
+           $('#BallvsVenueResponse').removeClass('hide-div');
+
+
+          console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("ballvsVenueInnings").innerHTML = '--';
+          document.getElementById("ballvsVenueRuns").innerHTML = '--';
+          document.getElementById("ballvsVenueWickets").innerHTML ='--';
+          document.getElementById("ballvsVenueAverage").innerHTML = '--';
+          document.getElementById("ballvsVenueEconomy").innerHTML = '--';
+          $('#BallvsVenueResponse').removeClass('hide-div');
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+function BatvsBallVenueClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+randomGIF();
+
+$('#divBatBallVenueResponce').addClass('hide-div');
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+var batsman = document.getElementById("batsmanBatvsBallvenue").value;
+var bowler = document.getElementById("bowlerBatvsBallvenue").value;
+var venue = document.getElementById("venueBatvsBallvenue").value;
+var entry = {
+            leaguageName: leaguage,
+            batsmanName: batsman,
+            bowlerName: bowler,
+            venue: venue
+        };
+
+fetch("/batVsBallInvVenue", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+     $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+  $('.loadingGIF').css('display', "none");
+          document.getElementById("batballvenueRuns").innerHTML = data.runs;
+          document.getElementById("batballvenueBalls").innerHTML = data.balls;
+          document.getElementById("batballvenueOuts").innerHTML = data.out;
+
+           var SR = data.strikerate;
+         
+          document.getElementById("batballvenueSR").innerHTML = String(SR).substr(0, 6);
+           $('#divBatBallVenueResponce').removeClass('hide-div');
+
+
+          console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("batballvenueRuns").innerHTML = '--';
+          document.getElementById("batballvenueBalls").innerHTML = '--';
+          document.getElementById("batballvenueOuts").innerHTML ='--';
+          document.getElementById("batballvenueSR").innerHTML = '--';
+         
+          $('#divBatBallVenueResponce').removeClass('hide-div');
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+function BatvsTeamClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+randomGIF();
+$('#divBatvsTeamResponce').addClass('hide-div');
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+var batsman = document.getElementById("batsmanBatvsTeam").value;
+var team = document.getElementById("TeamBatvsTeam").value;
+var entry = {
+            leaguageName: leaguage,
+            batsmanName: batsman,
+            team: team
+        };
+
+fetch("/batVsteam", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+  
+  $('.loadingGIF').css('display', "none");
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("BatvsTeamcenturies").innerHTML = data.centuries;
+          document.getElementById("BatvsTeamHcenturies").innerHTML = data.halfcenturies;
+          document.getElementById("BatvsTeamTotalRuns").innerHTML = data.totalrun;
+          document.getElementById("BatvsTeamInnings").innerHTML = data.innings;
+          document.getElementById("BatvsTeamOuts").innerHTML = data.outs;
+          
+          var strikRate = data.strikerate;
+          var Avg = data.average;
+          document.getElementById("BatvsTeamAverage").innerHTML = String(Avg).substr(0, 6);
+          document.getElementById("BatvsTeamSR").innerHTML = String(strikRate).substr(0, 6);
+          $('#divBatvsTeamResponce').removeClass('hide-div');
+
+        
+          console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("BatvsTeamcenturies").innerHTML = '--';
+          document.getElementById("BatvsTeamHcenturies").innerHTML = '--';
+          document.getElementById("BatvsTeamTotalRuns").innerHTML ='--';
+          document.getElementById("BatvsTeamInnings").innerHTML = '--';
+          document.getElementById("BatvsTeamOuts").innerHTML = '--';
+          document.getElementById("BatvsTeamAverage").innerHTML = '--';
+          document.getElementById("BatvsTeamSR").innerHTML = '--';
+          $('#divBatvsTeamResponce').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+function BallvsTeamClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+randomGIF();
+$('#divBallvsTeamResponce').addClass('hide-div');
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+var bowler = document.getElementById("bowlerBallvsTeam").value;
+var team = document.getElementById("TeamBallvsTeam").value;
+var entry = {
+            leaguageName: leaguage,
+            bowlerName: bowler,
+            team: team
+        };
+
+fetch("/ballVsteam", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("BallvsTeaminnings").innerHTML = data.innings;
+          document.getElementById("BallvsTeamTotalRuns").innerHTML = data.totalruns;
+          document.getElementById("BallvsTeamWickets").innerHTML = data.totalwickets;
+          
+          var economy = data.economy;
+          var Avg = data.average;
+          document.getElementById("BallvsTeamAverage").innerHTML = String(Avg).substr(0, 6);
+          document.getElementById("BallvsTeamEconomy").innerHTML = String(economy).substr(0, 6);
+          $('#divBallvsTeamResponce').removeClass('hide-div');
+
+        
+          console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("BallvsTeaminnings").innerHTML = '--';
+          document.getElementById("BallvsTeamTotalRuns").innerHTML = '--';
+          document.getElementById("BallvsTeamWickets").innerHTML ='--';
+          document.getElementById("BallvsTeamAverage").innerHTML = '--';
+          document.getElementById("BallvsTeamEconomy").innerHTML = '--';
+      
+          $('#divBallvsTeamResponce').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+function BatVsBallSmartClick()
+{
+var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $("#tbodyBatsmanResponce").empty();
+  $("#tbodyBowlerResponce").empty();
+  randomGIF();
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+
+var batsman1 = document.getElementById("batsmanBatvsBallS1").value;
+var batsman2 = document.getElementById("batsmanBatvsBallS2").value;
+var batsman3 = document.getElementById("batsmanBatvsBallS3").value;
+var batsman4 = document.getElementById("batsmanBatvsBallS4").value;
+var batsman5 = document.getElementById("batsmanBatvsBallS5").value;
+var batsman6 = document.getElementById("batsmanBatvsBallS6").value;
+
+var bowler1 = document.getElementById("bowlerBatvsBallS1").value;
+var bowler2 = document.getElementById("bowlerBatvsBallS2").value;
+var bowler3 = document.getElementById("bowlerBatvsBallS3").value;
+var bowler4 = document.getElementById("bowlerBatvsBallS4").value;
+var bowler5 = document.getElementById("bowlerBatvsBallS5").value;
+var bowler6 = document.getElementById("bowlerBatvsBallS6").value;
+
+var entry = {
+            leaguageName: leaguage,
+            batsman1: batsman1,
+            batsman2: batsman2,
+            batsman3: batsman3,
+            batsman4: batsman4,
+            batsman5: batsman5,
+            batsman6: batsman6,
+            bowler1: bowler1,
+            bowler2: bowler2,
+            bowler3: bowler3,
+            bowler4: bowler4,
+            bowler5: bowler5,
+            bowler6: bowler6,
+           
+        };
+
+fetch("/selection", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+          
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          console.log(Object.keys(data.batsman).length);
+          $("#tbodyBatsmanResponce").empty();
+          $("#tbodyBowlerResponce").empty();
+          var batLength = Object.keys(data.batsman).length
+          var tbodybat = document.getElementById('tbodyBatsmanResponce');
+          var batsmanTh = "<tr><th>Batsman</th> <th> Final Score</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          for (var i = 0; i < batLength; i++) {
+             
+              /* Must not forget the $ sign */
+              if(data.batsman[i]){
+              var tr = "<tr>";
+              tr += "<td>" + data.batsman[i].batsman + "</td>" + "<td>" + String(data.batsman[i].finalscore).substr(0, 6) + "</td></tr>";
+              tbodybat.innerHTML += tr;
+            }
+            else{
+              batLength = batLength + 1;
+            }
+
+              /* We add the table row to the table body */
+              
+          }
+
+          var ballLength = Object.keys(data.bowler).length
+          var tbodyball = document.getElementById('tbodyBowlerResponce');
+          var bowlerTh = "<tr><th>Bowler</th> <th> Final Score</th></tr>"
+          tbodyball.innerHTML += bowlerTh
+          for (var i = 0; i < ballLength; i++) {
+            if(data.bowler[i]){
+              var tr = "<tr>";
+
+              /* Must not forget the $ sign */
+              tr += "<td>" + data.bowler[i].bowler + "</td>" + "<td>" + String(data.bowler[i].finalscore).substr(0, 6) + "</td></tr>";
+
+              /* We add the table row to the table body */
+              tbodyball.innerHTML += tr;
+            }
+             else{
+              ballLength = ballLength + 1;
+            }
+          }
+
+
+
+          $('#divBallvsBatSmartResponce').removeClass('hide-div');
+
+        
+          //console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+           $("#tbodyBatsmanResponce").empty();
+          $("#tbodyBowlerResponce").empty();
+           var tbodybat = document.getElementById('tbodyBatsmanResponce');
+          var batsmanTh = "<tr><th>Batsman</th> <th> Final Score</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          var tbodyball = document.getElementById('tbodyBowlerResponce');
+          var bowlerTh = "<tr><th>Bowler</th> <th> Final Score</th></tr>"
+          tbodyball.innerHTML += bowlerTh
+          $('#divBallvsBatSmartResponce').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+
+function BatVsVenueSmartClick()
+{
+var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $("#tbodyBatsmanVenueResponce").empty();
+  randomGIF();
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+
+var batsman1 = document.getElementById("team1batsman1").value;
+var batsman2 = document.getElementById("team1batsman2").value;
+var batsman3 = document.getElementById("team1batsman3").value;
+var batsman4 = document.getElementById("team1batsman4").value;
+var batsman5 = document.getElementById("team1batsman5").value;
+//var batsman1 = document.getElementById("batsmanBatvsBallS6").value;
+
+var batsman6 = document.getElementById("team2batsman1").value;
+var batsman7 = document.getElementById("team2batsman2").value;
+var batsman8 = document.getElementById("team2batsman3").value;
+var batsman9 = document.getElementById("team2batsman4").value;
+var batsman10 = document.getElementById("team2batsman5").value;
+
+var venue = document.getElementById("venueBatvsVenueSmart").value;
+
+var entry = {
+            leaguageName: leaguage,
+            batsmanS1: batsman1,
+            batsmanS2: batsman2,
+            batsmanS3: batsman3,
+            batsmanS4: batsman4,
+            batsmanS5: batsman5,
+            batsmanS6: batsman6,
+            batsmanS7: batsman7,
+            batsmanS8: batsman8,
+            batsmanS9: batsman9,
+            batsmanS10: batsman10,
+            venueName: venue,
+           
+        };
+
+fetch("/batvsground", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          console.log(data.batsman)
+          console.log(Object.keys(data.batsman).length);
+            $('.loadingGIF').css('display', "none");
+          $("#tbodyBatsmanVenueResponce").empty();
+          
+          var batLength = Object.keys(data.batsman).length
+          var tbodybat = document.getElementById('tbodyBatsmanVenueResponce');
+          var batsmanTh = "<tr><th>Batsman</th> <th> Final Score</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          for (var i = 0; i < batLength; i++) {
+             
+              /* Must not forget the $ sign */
+              if(data.batsman[i]){
+              var tr = "<tr>";
+              tr += "<td>" + data.batsman[i].batsman + "</td>" + "<td>" + String(data.batsman[i].score).substr(0, 6) + "</td></tr>";
+              tbodybat.innerHTML += tr;
+            }
+            else{
+              batLength = batLength + 1;
+            }
+
+              /* We add the table row to the table body */
+              
+          }
+
+          
+          $('#divBatVsVenueSmartResponce').removeClass('hide-div');
+
+        
+          //console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+           $("#tbodyBatsmanVenueResponce").empty();
+        
+           var tbodybat = document.getElementById('tbodyBatsmanVenueResponce');
+          var batsmanTh = "<tr><th>Batsman</th> <th> Final Score</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          
+          $('#divBatVsVenueSmartResponce').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+
+function BallVsVenueSmartClick()
+{
+var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+$("#tbodyBowlerVenueResponce").empty();
+randomGIF();
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+
+var bowler1 = document.getElementById("team1bowler1").value;
+var bowler2 = document.getElementById("team1bowler2").value;
+var bowler3 = document.getElementById("team1bowler3").value;
+var bowler4 = document.getElementById("team1bowler4").value;
+var bowler5 = document.getElementById("team1bowler5").value;
+//var batsman1 = document.getElementById("batsmanBatvsBallS6").value;
+
+var bowler6 = document.getElementById("team2bowler1").value;
+var bowler7 = document.getElementById("team2bowler2").value;
+var bowler8 = document.getElementById("team2bowler3").value;
+var bowler9 = document.getElementById("team2bowler4").value;
+var bowler10 = document.getElementById("team2bowler5").value;
+
+var venue = document.getElementById("venueBallvsVenueSmart").value;
+
+var entry = {
+            leaguageName: leaguage,
+            bowlerS1: bowler1,
+            bowlerS2: bowler2,
+            bowlerS3: bowler3,
+            bowlerS4: bowler4,
+            bowlerS5: bowler5,
+            bowlerS6: bowler6,
+            bowlerS7: bowler7,
+            bowlerS8: bowler8,
+            bowlerS9: bowler9,
+            bowlerS10: bowler10,
+            venueName: venue,
+           
+        };
+
+fetch("/ballvsground", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+          console.log(data.bowler)
+          console.log(Object.keys(data.bowler).length);
+
+  $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          $("#tbodyBowlerVenueResponce").empty();
+          
+          var batLength = Object.keys(data.bowler).length
+          var tbodybat = document.getElementById('tbodyBowlerVenueResponce');
+          var batsmanTh = "<tr><th>Bowler</th> <th> Final Score</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          for (var i = 0; i < batLength; i++) {
+             
+              /* Must not forget the $ sign */
+              if(data.bowler[i]){
+              var tr = "<tr>";
+              tr += "<td>" + data.bowler[i].bowler + "</td>" + "<td>" + String(data.bowler[i].score).substr(0, 6) + "</td></tr>";
+              tbodybat.innerHTML += tr;
+            }
+            else{
+              batLength = batLength + 1;
+            }
+
+              /* We add the table row to the table body */
+              
+          }
+
+          
+          $('#divBallVsVenueSmartResponce').removeClass('hide-div');
+
+        
+          //console.log(data);
+        }).catch(function(error){
+
+  $('.loadingGIF').css('display', "none");
+           $("#tbodyBowlerVenueResponce").empty();
+          
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+           var tbodybat = document.getElementById('tbodyBowlerVenueResponce');
+          var batsmanTh = "<tr><th>Bowler</th> <th> Final Score</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          
+          $('#divBallVsVenueSmartResponce').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+
+function BatindepthClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+
+    $('#divBatIndepthResponce').addClass('hide-div');
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+$("#tbodyBatIndepthResponce").empty();
+randomGIF();
+  $('.loadingGIF').css('display', "block");
+//var leaguage = document.getElementById("selectedLeaguage").value;
+var batsman = document.getElementById("batsmanBatindepth").value;
+var team = document.getElementById("TeamBatindepth").value;
+
+var OutputHeaderLeaguag = batsman + "'s All " + leaguage + " Performance";
+$('#spnLeagueName').html(OutputHeaderLeaguag);
+
+var entry = {
+            leaguageName: leaguage,
+            batsmanName: batsman,
+            teamName: team,
+           
+        };
+
+fetch("/batindepth", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+          console.log(data.batsman)
+          console.log(data.teamlist);
+
+         $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("batindepthHH").innerHTML = data.batsman[0].hardhitting;
+          document.getElementById("batindepthFC").innerHTML = data.batsman[0].finisher;
+          document.getElementById("batindepthFS").innerHTML = data.batsman[0].fastscore;
+          
+          var rbw = data.batsman[0].runningBTWWicket;
+          var Avg = data.batsman[0].average;
+          document.getElementById("batindepthAVG").innerHTML = String(Avg).substr(0, 6);
+          document.getElementById("batindepthRBW").innerHTML = String(rbw).substr(0, 6);
+
+
+          $("#tbodyBatIndepthResponce").empty();
+          
+          var batLength = Object.keys(data.teamlist).length
+          var tbodybat = document.getElementById('tbodyBatIndepthResponce');
+          var batsmanTh = "<tr><span id = 'spnTeamName' style='color: black;padding: 5px;background: blanchedalmond;'> Selected Team Against Performance</span></tr><tr><th>Bowler</th> <th> Hard-Hitting</th> <th> Runnig Between Wickets </th> <th> Out</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          for (var i = 0; i < batLength; i++) {
+             
+              /* Must not forget the $ sign */
+              if(data.teamlist[i]){
+              var tr = "<tr>";
+              tr += "<td>" + data.teamlist[i].bowler + "</td>" + "<td>" + String(data.teamlist[i].hardhitting).substr(0, 6) + "</td>" + "<td>" + String(data.teamlist[i].runningBTWWicket).substr(0, 6) + "</td>" + "<td>" + String(data.teamlist[i].out).substr(0, 6) + "</td></tr>";
+              tbodybat.innerHTML += tr;
+            }
+            else{
+              batLength = batLength + 1;
+            }
+
+              /* We add the table row to the table body */
+              
+          }
+
+          var OutputHeaderTeam = batsman +  " against " +team;
+          $('#spnTeamName').html(OutputHeaderTeam);
+        //  $('#spnTeamName').css('')
+          $('#divBatIndepthResponce').removeClass('hide-div');
+
+        
+          //console.log(data);
+        }).catch(function(error){
+
+          $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("batindepthHH").innerHTML = '--';
+          document.getElementById("batindepthFC").innerHTML = '--';
+          document.getElementById("batindepthFS").innerHTML = '--';
+          document.getElementById("batindepthAVG").innerHTML = '--';
+          document.getElementById("batindepthRBW").innerHTML = '--';
+         
+           $("#tbodyBowlerVenueResponce").empty();
+        
+           var tbodybat = document.getElementById('tbodyBowlerVenueResponce');
+          var batsmanTh = "<tr><span> Selected Team Against Performance</span></tr><tr><th>Bowler</th> <th> Hard-Hitting</th> <th> Runnig Between Wickets </th> <th> Out</th></tr>"
+          tbodybat.innerHTML += batsmanTh
+          
+          $('#divBatIndepthResponce').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+
+
+function BallindepthClick()
+{
+  var leaguage = document.getElementById("selectedLeaguage").value;
+  if (!leaguage){
+      alert('Please Select Leaguage')
+      return false;
+  }
+  randomGIF();
+    $('#divBallIndepthResponce').addClass('hide-div');
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(3px)')
+  $('.loadingGIF').css('display', "block");
+  
+//var leaguage = document.getElementById("selectedLeaguage").value;
+var bowler = document.getElementById("bowlerBallindepth").value;
+
+var entry = {
+            leaguageName: leaguage,
+            bowlerName: bowler,
+            
+        };
+
+fetch("/ballindepth", {
+      method: "POST",
+      cache: "no-cache",
+       body: JSON.stringify(entry),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status code: ${response.status}`);
+          return;
+        }
+        response.json().then(function (data) {
+         
+          $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("ballindepthE").innerHTML = String(data.bowler[0].economy).substr(0, 6);
+          document.getElementById("ballindepthWT").innerHTML = String(data.bowler[0].wicket_takers).substr(0, 6);
+          document.getElementById("ballindepthBWT").innerHTML = String(data.bowler[0].big_wicket_taker).substr(0, 6);
+          
+          var sp = data.bowler[0].short_performance;
+          var Avg = data.bowler[0].average;
+          document.getElementById("ballindepthAVG").innerHTML = String(Avg).substr(0, 6);
+          document.getElementById("ballindepthSP").innerHTML = String(sp).substr(0, 6);
+
+          $('#divBallIndepthResponce').removeClass('hide-div');
+
+        
+          //console.log(data);
+        }).catch(function(error){
+            $('.loadingGIF').css('display', "none");
+
+   $('body > *:not(.loadingGIF)').css('filter','blur(0px)')
+          document.getElementById("ballindepthE").innerHTML = '--';
+          document.getElementById("ballindepthWT").innerHTML = '--';
+          document.getElementById("ballindepthBWT").innerHTML = '--';
+          document.getElementById("ballindepthAVG").innerHTML = '--';
+          document.getElementById("ballindepthSP").innerHTML = '--';
+         
+          
+          
+          $('#divBallIndepthResponce').removeClass('hide-div');
+
+          console.log("Fetch error: " + error)});
+      })
+      .catch(function (error) {
+        console.log("Fetch error: " + error);
+      });
+
+}
+
+function randomGIF(){
+  const rndInt = Math.floor(Math.random() * 12) + 1
+  if(rndInt == 1){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/1.gif') }}");
+}else if(rndInt == 2){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/2.gif') }}");
+}
+else if(rndInt == 3){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/3.gif') }}");
+}else if(rndInt == 4){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/4.gif') }}");
+}else if(rndInt == 5){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/5.gif') }}");
+}else if(rndInt == 6){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/6.gif') }}");
+}else if(rndInt == 7){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/7.gif') }}");
+}else if(rndInt == 8){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/8.gif') }}");
+}else if(rndInt == 9){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/9.gif') }}");
+}else if(rndInt == 10){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/10.gif') }}");
+}else if(rndInt == 11){
+ $(".loadingGIF").attr("src","{{ url_for ('static', filename = 'img/11.gif') }}");
+}
+}
+
+function hideActionDiv(){
+  $('.ActionDiv').addClass('hide-div');
+   //$('.loadingGIF').css('display', "none");
+
+
+}
+</script>
+</head>
+<body onload="hideActionDiv();">
+<datalist id="playerMasterddl" name="playerMasterddl"> 
+<select name="playerMasterddl" width="300px">
+{% for i in playerMastervelue %}
+      {% set item_1 = playerMastervelue[loop.index-1] %}
+      {% set item_2 = playerMasterName[loop.index-1] %}
+    <option value="{{ item_1 }}" SELECTED>{{ item_2 }}</option>
+{% endfor %}
+</select>
+</datalist>
+
+<datalist id="TeamMasterddl" name="TeamMasterddl"> 
+<select name="TeamMasterddl" width="300px">
+{% for i in teamMaster %}
+    <option value="{{ i }}" SELECTED>{{ i }}</option>
+{% endfor %}
+</select>
+</datalist>
+
+<datalist id="VenueMasterddl" name="VenueMasterddl"> 
+<select name="VenueMasterddl" width="300px">
+{% for i in venueMaster %}
+    <option value="{{ i }}" SELECTED>{{ i }}</option>
+{% endfor %}
+</select>
+</datalist>
+
+
+<div class="loadingGIF">  
+   <img src="{{ url_for ('static', filename = 'img/cricketHomeImage.jpg') }}" class="loadingGIF" style="opacity: 1;width: 30%;position: absolute;display: flex;margin-left: 36%;margin-top: 10%;justify-content: center;border: 0px;" alt="">  
+</div>
+	<form>
+		<div id="leagueSelect" style="height: 50px;float: left;">
+<div class="wrapper" style="margin-top: 0px;margin-bottom: 0px;">
+  <nav class="tabs" style="padding: 5px;">
+    <div class="selector"></div>
+    <a href="#" ><img class="focus" src="{{ url_for ('static', filename = 'img/iplHome.PNG') }}" onclick="selectDataset('IPL')"></a>
+    <a href="#" class="focus"><img src="{{ url_for ('static', filename = 'img/bigbashHome.jpg') }}" onclick="selectDataset('BBL')"></a>
+    <a href="#" class="focus"><img src="{{ url_for ('static', filename = 'img/t20iHome.jpg') }}" onclick="selectDataset('T20i')"></a>
+  </nav>
+</div>
+</div>
+<table style="float:right;">
+<tr>
+<td>
+
+<div id="leagueSelect" style="height: 50px;float:right;">
+<div class="tabs" style="background-color: lavender;padding: 10px;">
+	<table>
+		<tr><td>
+  <label>Selected Leaguage:</label> </td><td> <label id="selectedLeaguage" name="selectedLeaguage" style="margin-left:-25px;">----</label></td></tr>
+  <tr><td>
+  <label>Selected Analysis-Type:</label> </td> <td><label id="selectedType">----</label></td>
+</tr></table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+
+<div id="divBallIndepth" style="float:right; margin-top:60px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="divBallIndepthResponce" class="hide-div" style="padding-right: 30px;margin-top: 70px;">
+          
+            <table id = "batvsballResponseTable">
+              <tr> 
+            <th>
+              <label>Economy</label>
+           </th>
+           <th>
+              <label>Wicket takers</label>
+          </th>
+          <th>
+              <label>Average</label>
+            </th>
+            <th>
+              <label>Big wicket taker</label>
+           </th>
+           <th>
+              <label>Short performance</label>
+          </th>
+          
+          </tr>
+          <tr>
+            <td>
+               <label id="ballindepthE"></label>
+              </td>
+                 <td>
+               <label id="ballindepthWT"></label>
+              </td>
+                 <td>
+               <label id="ballindepthAVG"></label>
+              </td>
+                 <td>
+               <label id="ballindepthBWT"></label>
+              </td>
+               <td>
+               <label id="ballindepthSP"></label>
+              </td>
+          </tr>
+          </table>
+      
+           
+        </div>
+      </td>
+      <td style="vertical-align:top;">
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Bowler In-Depth <i class="fas fa-brain" style="font-size:22px;color: #cc6699;"></i></label> 
+</div>
+  <div class="form-group" style="margin-top:10px;">
+    <span>Bowler</span>
+    <input class="form-field" type="text" name = "bowler" id="bowlerBallindepth" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+  <button type="button" class="span-header" onclick="BallindepthClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+<div id="divBallVsVenueSmart" style="float:right; margin-top:60px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="divBallVsVenueSmartResponce" class="hide-div" style="padding-right: 60px;margin-top: -200px;">
+          <table id="tblBowlerResponce" class="batvsballSmartResponseTable">
+             <tbody id="tbodyBowlerVenueResponce"></tbody>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Bowler Vs Venue Smart <i class="fas fa-brain" style="font-size:22px;color: #cc6699;"></i></label> 
+</div>
+<table style="float:right; margin-top: 15px;">
+  <tr>
+    <th>
+      <span>
+    Select Team1 Bowler
+  </span>
+  </th>
+  <th> 
+    <span>
+  Select Team2 Bowler
+  </span>
+</th>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team1bowler1" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team2bowler1" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team1bowler2" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team2bowler2" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team1bowler3" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team2bowler3" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team1bowler4" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team2bowler4" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team1bowler5" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="team2bowler5" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <th style="float:right;margin-top: 20px;">
+    <span>
+      Select Venue : 
+    </span>
+  </th>
+ <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "venue" id="venueBallvsVenueSmart" placeholder="Enter venue name" list="VenueMasterddl">
+  </td>
+</div>
+
+</tr>
+<tr>
+
+  <td>
+  <div class="form-group" style="margin-top:7px; width: 202%;">
+  <button type="button" class="span-header" onclick="BallVsVenueSmartClick();">Submit</button>
+</td>
+</div>
+  </tr>
+</table>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+
+<div id="divBatIndepth" style="float:right; margin-top:60px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="divBatIndepthResponce" class="hide-div" style="padding-right: 30px;margin-top: -100px;">
+           <table>
+            <tr>
+              <span id="spnLeagueName" style="color: black;padding: 5px;background: blanchedalmond;">
+                Selected Leaguage Performance
+              </span>
+            </tr>
+            <tr>
+
+              <td>
+            <table id = "batvsballResponseTable" style="font-size:smaller;">
+              <tr> 
+            <th>
+             
+              <label>Hard-Hitting</label>
+           </th>
+           <th>
+           
+              <label>Finisher-Capability</label>
+          </th>
+          <th>
+              <label>Fast Score</label>
+            </th>
+            <th>
+              <label>Average</label>
+           </th>
+           <th>
+           
+              <label>Running Between Wicket</label>
+          </th>
+          
+          </tr>
+          <tr>
+            <td>
+               <label id="batindepthHH"></label>
+              </td>
+                 <td>
+               <label id="batindepthFC"></label>
+              </td>
+                 <td>
+               <label id="batindepthFS"></label>
+              </td>
+                 <td>
+               <label id="batindepthAVG"></label>
+              </td>
+               <td>
+               <label id="batindepthRBW"></label>
+              </td>
+          </tr>
+          </table>
+        </td>
+          </tr>
+          <tr>
+            <td>
+            <table id="tblBatIndepthResponce" class="batvsballSmartResponseTable" style="font-size:smaller;">
+             <tbody id="tbodyBatIndepthResponce"></tbody>
+          </table>
+        </td>
+          </tr></table>
+           
+        </div>
+      </td>
+      <td style="vertical-align:top;">
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Batsman In-Depth <i class="fas fa-brain" style="font-size:22px;color: #cc6699;"></i></label> 
+</div>
+  <div class="form-group" style="margin-top:10px;">
+    <span>Batsman</span>
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatindepth" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+   <span>Team</span>
+    <input class="form-field" type="text" name = "team" id="TeamBatindepth" placeholder="Enter Team name" list="TeamMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+  <button type="button" class="span-header" onclick="BatindepthClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+<div id="divBatVsVenueSmart" style="float:right; margin-top:60px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="divBatVsVenueSmartResponce" class="hide-div" style="padding-right: 60px;margin-top: -200px;">
+          <table id="tblBatsmanResponce" class="batvsballSmartResponseTable">
+             <tbody id="tbodyBatsmanVenueResponce"></tbody>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Batsman Vs Venue Smart <i class="fas fa-brain" style="font-size:22px;color: #cc6699;"></i></label> 
+</div>
+<table style="float:right; margin-top: 15px;">
+  <tr>
+    <th>
+      <span>
+    Select Team1 Batsman
+  </span>
+  </th>
+  <th> 
+    <span>
+  Select Team2 Batsman
+  </span>
+</th>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team1batsman1" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team2batsman1" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team1batsman2" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team2batsman2" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team1batsman3" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team2batsman3" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team1batsman4" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team2batsman4" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team1batsman5" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="team2batsman5" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <th style="float:right;margin-top: 20px;">
+    <span>
+      Select Venue : 
+    </span>
+  </th>
+ <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "venue" id="venueBatvsVenueSmart" placeholder="Enter venue name" list="VenueMasterddl">
+  </td>
+</div>
+
+</tr>
+<tr>
+
+  <td>
+  <div class="form-group" style="margin-top:7px; width: 202%;">
+  <button type="button" class="span-header" onclick="BatVsVenueSmartClick();">Submit</button>
+</td>
+</div>
+  </tr>
+</table>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+
+
+
+
+<div id="divBallvsBatSmart" style="float:right; margin-top:60px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="divBallvsBatSmartResponce" class="hide-div" style="padding-right: 60px;margin-top: -200px;">
+          <table>
+            <tr>
+              <td style="vertical-align: top;">
+           <table id="tblBatsmanResponce" class="batvsballSmartResponseTable">
+            <tbody id="tbodyBatsmanResponce"></tbody>
+           </table>
+           </td>
+           <td style="vertical-align: top;">
+            <table id="tblBowlerResponce" class="batvsballSmartResponseTable">
+               <tbody id="tbodyBowlerResponce"></tbody>
+           </table>
+           </td>
+           </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Batsman Vs Bowler Smart <i class="fas fa-brain" style="font-size:22px;color: #cc6699;"></i></label> 
+</div>
+<table style="float:right; margin-top: 15px;">
+  <tr>
+    <th>
+      <span>
+    Select Batsman
+  </span>
+  </th>
+  <th> 
+    <span>
+  Select Bowler
+  </span>
+</th>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBallS1" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBallS1" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBallS2" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBallS2" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBallS3" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBallS3" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBallS4" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBallS4" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBallS5" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBallS5" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBallS6" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+</td>
+<td>
+  <div class="form-group" style="margin-top:10px;">
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBallS6" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+  <div class="form-group" style="margin-top:7px; width: 202%;">
+  <button type="button" class="span-header" onclick="BatVsBallSmartClick();">Submit</button>
+</td>
+</div>
+  </tr>
+</table>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+
+<div id="divBallvsTeam" style="float:right; margin-top:80px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="divBallvsTeamResponce" class="hide-div" style="padding-right: 60px;">
+          <table id = "batvsballResponseTable"><tr> 
+            <th>
+             
+              <label>innings</label>
+           </th>
+           <th>
+           
+              <label>total run</label>
+          </th>
+          <th>
+              <label>total wickets</label>
+            </th>
+            <th>
+              <label>average</label>
+           </th>
+           <th>
+           
+              <label>economy</label>
+          </th>
+         
+          </tr>
+          <tr>
+            <td>
+               <label id="BallvsTeaminnings"></label>
+              </td>
+                 <td>
+               <label id="BallvsTeamTotalRuns"></label>
+              </td>
+                 <td>
+               <label id="BallvsTeamWickets"></label>
+              </td>
+                 <td>
+               <label id="BallvsTeamAverage"></label>
+              </td>
+               <td>
+               <label id="BallvsTeamEconomy"></label>
+              </td>
+              
+          </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Bowler Vs Team <i class="far fa-pencil" style="font-size:22px;color: #dcbaff;"></i></label> 
+</div>
+  <div class="form-group" style="margin-top:10px;">
+    <span>Bowler</span>
+    <input class="form-field" type="text" name = "bowler" id="bowlerBallvsTeam" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+   <span>Team</span>
+    <input class="form-field" type="text" name = "team" id="TeamBallvsTeam" placeholder="Enter Team name" list="TeamMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+  <button type="button" class="span-header" onclick="BallvsTeamClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+
+<div id="divBatvsTeam" style="float:right; margin-top:80px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="divBatvsTeamResponce" class="hide-div" style="padding-right: 60px;">
+          <table id = "batvsballResponseTable"><tr> 
+            <th>
+             
+              <label>centuries</label>
+           </th>
+           <th>
+           
+              <label>half-centuries</label>
+          </th>
+          <th>
+              <label>strike rate</label>
+            </th>
+            <th>
+              <label>total run</label>
+           </th>
+           <th>
+           
+              <label>innings</label>
+          </th>
+          <th>
+              <label>outs</label>
+            </th>
+            <th>
+              <label>average</label>
+           </th>
+          </tr>
+          <tr>
+            <td>
+               <label id="BatvsTeamcenturies"></label>
+              </td>
+                 <td>
+               <label id="BatvsTeamHcenturies"></label>
+              </td>
+                 <td>
+               <label id="BatvsTeamSR"></label>
+              </td>
+                 <td>
+               <label id="BatvsTeamTotalRuns"></label>
+              </td>
+               <td>
+               <label id="BatvsTeamInnings"></label>
+              </td>
+               <td>
+               <label id="BatvsTeamOuts"></label>
+              </td>
+               <td>
+               <label id="BatvsTeamAverage"></label>
+              </td>
+          </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Batsman Vs Team <i class="far fa-pencil" style="font-size:22px;color: #dcbaff;"></i></label> 
+</div>
+  <div class="form-group" style="margin-top:10px;">
+    <span>Batsman</span>
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsTeam" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+   <span>Team</span>
+    <input class="form-field" type="text" name = "team" id="TeamBatvsTeam" placeholder="Enter Team name" list="TeamMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+  <button type="button" class="span-header" onclick="BatvsTeamClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+
+
+<div id="divBatBallVenue" style="float:right; margin-top:80px;" class="ActionDiv">
+  <table>
+    <tr>
+      <td>
+        <div id="divBatBallVenueResponce" class="hide-div" style="padding-right: 60px;">
+          <table id = "batvsballResponseTable"><tr> 
+            <th>
+             
+              <label>Runs</label>
+           </th>
+           <th>
+           
+              <label>Balls</label>
+          </th>
+          <th>
+              <label>Outs</label>
+            </th>
+            <th>
+              <label>Strik Rate</label>
+           </th>
+          </tr>
+          <tr>
+            <td>
+               <label id="batballvenueRuns"></label>
+              </td>
+                 <td>
+               <label id="batballvenueBalls"></label>
+              </td>
+                 <td>
+               <label id="batballvenueOuts"></label>
+              </td>
+                 <td>
+               <label id="batballvenueSR"></label>
+              </td>
+          </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Bat vs Ball in Venue <i class="far fa-pencil" style="font-size:22px;color: #dcbaff;"></i></label> 
+</div>
+  <div class="form-group" style="margin-top:10px;">
+    <span>Batsman</span>
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBallvenue" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+   <span>Bowler</span>
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBallvenue" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+   <span>Venue</span>
+    <input class="form-field" type="text" name = "venue" id="venueBatvsBallvenue" placeholder="Enter venue name" list="VenueMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+  <button type="button" class="span-header" onclick="BatvsBallVenueClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+<div id="divBatBall" style="float:right; margin-top:80px;" class="ActionDiv">
+  <table>
+    <tr>
+      <td>
+        <div id="batvsballResponse" class="hide-div" style="padding-right: 60px;">
+          <table id = "batvsballResponseTable"><tr> 
+            <th>
+             
+              <label>Runs</label>
+           </th>
+           <th>
+           
+              <label>Balls</label>
+          </th>
+          <th>
+              <label>Outs</label>
+            </th>
+            <th>
+              <label>Strik Rate</label>
+           </th>
+          </tr>
+          <tr>
+            <td>
+               <label id="batvsballRuns"></label>
+              </td>
+                 <td>
+               <label id="batvsballBalls"></label>
+              </td>
+                 <td>
+               <label id="batvsballOuts"></label>
+              </td>
+                 <td>
+               <label id="batvsballSR"></label>
+              </td>
+          </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Batsman Vs Bowler <i class="far fa-pencil" style="font-size:22px;color: #dcbaff;"></i></label> 
+</div>
+	<div class="form-group" style="margin-top:10px;">
+    <span>Batsman</span>
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsBall" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+	 <span>Bowler</span>
+    <input class="form-field" type="text" name = "bowler" id="bowlerBatvsBall" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+	<button type="button" class="span-header" onclick="BatvsBallClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+<div id="divBallvsVenue" style="float:right; margin-top:80px;" class="ActionDiv">
+	 <table>
+    <tr>
+      <td>
+        <div id="BallvsVenueResponse" class="hide-div" style="padding-right: 60px;">
+          <table id = "batvsballResponseTable"><tr> 
+            <th>
+             
+              <label>innings</label>
+           </th>
+           <th>
+           
+              <label>total runs</label>
+          </th>
+          <th>
+              <label>total wickets</label>
+            </th>
+            <th>
+              <label>average</label>
+           </th>
+           <th>
+           
+              <label>economy</label>
+          </th>
+         
+          </tr>
+          <tr>
+            <td>
+               <label id="ballvsVenueInnings"></label>
+              </td>
+                 <td>
+               <label id="ballvsVenueRuns"></label>
+              </td>
+                 <td>
+               <label id="ballvsVenueWickets"></label>
+              </td>
+                 <td>
+               <label id="ballvsVenueAverage"></label>
+              </td>
+               <td>
+               <label id="ballvsVenueEconomy"></label>
+              </td>
+              
+          </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Bowler vs Venue <i class="far fa-pencil" style="font-size:22px;color: #dcbaff;"></i></label> 
+</div>
+  <div class="form-group" style="margin-top:10px;">
+    <span>Bowler</span>
+    <input class="form-field" type="text" name = "bowler" id="bowlerBallvsVenue" placeholder="Enter bowler name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+   <span>Venue</span>
+    <input class="form-field" type="text" name = "venue" id="venueBallvsVenue" placeholder="Enter Venue name" list="VenueMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+  <button type="button" class="span-header" onclick="BallvsVenueClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+<div id="divBatvsVenue" style="float:right; margin-top:80px;" class="ActionDiv">
+   <table>
+    <tr>
+      <td>
+        <div id="BatvsVenueResponse" class="hide-div" style="padding-right: 60px;">
+          <table id = "batvsballResponseTable"><tr> 
+            <th>
+             
+              <label>centuries</label>
+           </th>
+           <th>
+           
+              <label>half-centuries</label>
+          </th>
+          <th>
+              <label>strike rate</label>
+            </th>
+            <th>
+              <label>total run</label>
+           </th>
+           <th>
+           
+              <label>innings</label>
+          </th>
+          <th>
+              <label>outs</label>
+            </th>
+            <th>
+              <label>average</label>
+           </th>
+          </tr>
+          <tr>
+            <td>
+               <label id="batvsVenuecenturies"></label>
+              </td>
+                 <td>
+               <label id="batvsVenueHcenturies"></label>
+              </td>
+                 <td>
+               <label id="batvsVenueSR"></label>
+              </td>
+                 <td>
+               <label id="batvsVenueTotalRuns"></label>
+              </td>
+               <td>
+               <label id="batvsVenueInnings"></label>
+              </td>
+               <td>
+               <label id="batvsVenueOuts"></label>
+              </td>
+               <td>
+               <label id="batvsVenueAverage"></label>
+              </td>
+          </tr>
+          </table>
+        </div>
+      </td>
+      <td>
+<div>
+    <label class="" style="font-size:30px;font-family: monospace; color: cornflowerblue;">Batsman Vs Venue <i class="far fa-pencil" style="font-size:22px;color: #dcbaff;"></i></label> 
+</div>
+  <div class="form-group" style="margin-top:10px;">
+    <span>Batsman</span>
+    <input class="form-field" type="text" name = "batsman" id="batsmanBatvsVenue" placeholder="Enter batsman name" list="playerMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+   <span>Venue</span>
+    <input class="form-field" type="text" name = "venue" id="venueBatvsVenue" placeholder="Enter Venue name" list="VenueMasterddl">
+</div>
+<div class="form-group" style="margin-top:7px;">
+  <button type="button" class="span-header" onclick="BatvsVenueClick();">Submit</button>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+<div style="" class="ActionDiv">
+</div>
+<div style="" class="ActionDiv">
+</div>
+<div style="" class="ActionDiv">
+</div>
+</div>
+</td>
+</tr>
+</table>
+
+<div id="sitelink" style="float: left;margin-top: 20px;position: fixed;">
+<table class="tabs" style="background-color: transparent;">
+	<tr>
+    <th style="font-size:17px;">Manual <i class="far fa-lightbulb" style="font-size:22px;color: #dcbaff;"></i></th>
+    <th style="font-size:17px;">Smart <i class="fas fa-lightbulb" style="font-size:22px;color:yellow;"></i></th>
+  </tr>
+	<tr>
+		<td>
+<button type="button" class="simple" id="manualBatvsBall" title="Batsman vs Bowler" style="padding-top: 0px;margin-top: 0px;" onclick="showMydiv('divBatBall');"><img src="{{ url_for ('static', filename = 'img/BatBall.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+<td>
+<button type="button" class="fill" id="smartBatvsBall" title="Smart Batsman vs Bowler" style="padding-top: 0px;margin-top: 0px;" onclick="showMydiv('divBallvsBatSmart');"><img src="{{ url_for ('static', filename = 'img/SmartBatvsBall.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+
+
+
+</tr>
+<tr>
+		<td>
+<button type="button" title="Batsman vs Venue" class="simple" style="padding-top: 0px;margin-top: 0px;" id="manualBatvsVenue" onclick="showMydiv('divBatvsVenue');"><img src="{{ url_for ('static', filename = 'img/BatVenue.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+<td> 
+<button type="button" title="Batsman vs Venue Smart" class="fill" style="padding-top: 0px;margin-top: 0px;" id="smartBatvsVenue" onclick="showMydiv('divBatVsVenueSmart');"><img src="{{ url_for ('static', filename = 'img/SmartBatvsVenue.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+</tr>
+<tr>
+		<td>
+<button type="button" class="simple" title="Bowler vs Venue" style="padding-top: 0px;margin-top: 0px;" id="manualBallvsVenue" onclick="showMydiv('divBallvsVenue');"><img src="{{ url_for ('static', filename = 'img/BallVenue.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+<td>
+<button type="button" class="fill" title="Bowler vs Venue Smart" style="padding-top: 0px;margin-top: 0px;" id="smartBallvsVenue" onclick="showMydiv('divBallVsVenueSmart');"><img src="{{ url_for ('static', filename = 'img/SmartBallvsVenue.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+</tr>
+<tr>
+		<td>
+<button type="button" class="simple" title="Batsman vs Bowler in Venue" style="padding-top: 0px;margin-top: 0px;" id="manualBatBallvsVenue" onclick="showMydiv('divBatBallVenue');"><img src="{{ url_for ('static', filename = 'img/AllFinal.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+<td>
+<button type="button" class="fill" title="Batsman indepth" id="smartBatindepth" style="padding-top: 0px;margin-top: 0px;" onclick="showMydiv('divBatIndepth');"><img src="{{ url_for ('static', filename = 'img/SmartBatindepth.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+</tr>
+<tr>
+		<td>
+<button type="button" class="simple" title="Batsman vs Team" style="padding-top: 0px;margin-top: 0px;" id="manualBatvsTeam" onclick="showMydiv('divBatvsTeam');"><img src="{{ url_for ('static', filename = 'img/BatTeam.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+<td>
+<button type="button" class="fill" title="Bowler indepth" style="padding-top: 0px;margin-top: 0px;" id="smartBallindepth" onclick="showMydiv('divBallIndepth');"><img src="{{ url_for ('static', filename = 'img/smartBallindepth.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+</tr>
+<tr>
+		<td>
+<button type="button" class="simple" title="Bowler vs Team" style="padding-top: 0px;margin-top: 0px;" id="manualBallvsTeam" onclick="showMydiv('divBallvsTeam');"><img src="{{ url_for ('static', filename = 'img/BallTeam.PNG') }}" style="opacity: 1 !important;height: 35px;width: 60px;padding: 0px;border: 0px;margin-top: 10px;"></button>
+</td>
+<td>
+<button type="button" class="fill">---</button>
+</td>
+</tr>
+	</div>
+
+
+
+</form>
+</body>
+</html>
