@@ -68,7 +68,7 @@ def website_home():
 #		return render_template('imagebat.html')
 
 
-@app.route('/batVsBall', methods=['GET','POST'])		
+@app.route('/batVsBall', methods=['POST'])		
 def home():
 				req = request.get_json()
 				#print(req)
@@ -126,7 +126,7 @@ def home():
 		#		print(JSONP_data)
 #			 answer = [JSONP_data,JSONP_data1,JSONP_data2]
 				answer = {'runs':df_list,'balls':df_list1,'out':df_list2,'strikeRate':df_list3}
-				#print(answer)
+				print(answer)
 #			d = json.dumps(d)
 		#		ds = np.asarray(delivery_data)
 		#		dds = ds.tolist()
