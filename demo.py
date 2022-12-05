@@ -12,8 +12,6 @@ from gevent import monkey
 #from subprocess import check_output
 
 
-#monkey.patch_all()
-
 app = Flask(__name__)
 
 #import mysql.connector
